@@ -1,22 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Disclosure, DisclosureButton, DisclosurePanel, CloseButton} from '@headlessui/react'
 import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'    
 import { CustomLink } from './CustomLink';
+import { DarkContext } from '../App';
 import linkedinLogoLight from '../assets/icons/darkmode/linkedin-light-icon.svg';
 import githubLogoLight from '../assets/icons/darkmode/github-light-icon.svg';
 import linkedinLogoDark from '../assets/icons/darkmode/linkedin-dark-icon.svg';
 import githubLogoDark from '../assets/icons/darkmode/github-dark-icon.svg';
 
-export function NavBar ({dark, onClickToggle}){
+export function NavBar ({onClickToggle}){
+  const dark = useContext(DarkContext)
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
       const onScroll = () => {
-          if(window.scrollY > 50){
-              setScrolled(true);
-          }else{
-              setScrolled(false);
-          }
+        if(window.scrollY > 50){
+            setScrolled(true);
+        }else{
+            setScrolled(false);
+        }
       }
 
       window.addEventListener("scroll", onScroll);
@@ -25,7 +27,7 @@ export function NavBar ({dark, onClickToggle}){
   }, [])
 
   return (
-    <Disclosure as="nav" className={(scrolled ? "bg-light-secondary dark:bg-dark-secondary/75 py-0 " : "py-2 ") + "w-full fixed top-0 z-50 transition-all duration-700 bg-light-secondary dark:bg-dark-secondary md:bg-transparent md:dark:bg-transparent"}>
+    <Disclosure id="navbar-main" as="nav" className={"w-full fixed top-0 z-50 transition-all duration-700 " + (scrolled ? "bg-light-secondary dark:bg-dark-secondary md:bg-light-secondary/75 md:dark:bg-dark-secondary/75 py-0" : "py-2 bg-transparent")}>
       <div className="mx-auto max-w-7xl px-2 md:px-6 lg:px-8">
         <div className="relative flex h-24 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -47,12 +49,12 @@ export function NavBar ({dark, onClickToggle}){
             </div>
           </div>
           <div className="flex w-40 -ml-40 mx-auto items-center justify-center">
-            <a className="size-9 mx-2" href='https://www.linkedin.com/in/kirlianpacibe12' target='_blank'>
-              <img src={dark ? linkedinLogoLight : linkedinLogoDark} alt = "linkedin logo" />
+            <a className="mx-2" href='https://www.linkedin.com/in/kirlianpacibe12' target='_blank'>
+              <img className='size-9' src={dark ? linkedinLogoLight : linkedinLogoDark} alt = "linkedin logo" />
             </a>
-            <a className="size-9 mx-2" href='https://github.com/kyverus' target='_blank'>
-              <img src={dark ? githubLogoLight : githubLogoDark} alt = "github logo" />
-              </a>
+            <a className="mx-2" href='https://github.com/kyverus' target='_blank'>
+              <img className='size-9' src={dark ? githubLogoLight : githubLogoDark} alt = "github logo" />
+            </a>
             <button className='size-9 mx-2' onClick={()=> onClickToggle()}>
               {
                   dark ? <SunIcon color='#ffffff' /> : <MoonIcon color='#000000'/>

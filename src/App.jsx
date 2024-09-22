@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import { NavBar } from './components/NavBar';
 import { About } from './components/About/About';
+import { Projects } from './components/Projects/Projects';
+import { createContext } from 'react';
+
+export const DarkContext = createContext(false);
 
 function App() {
     const [dark, setDark] = useState(false);
@@ -18,9 +22,12 @@ function App() {
     }
     
     return (
-        <div className='text-black bg-light-primary dark:text-white dark:bg-dark-primary' id="app">
-            <NavBar dark={dark} onClickToggle={darkModeHandler} />   
-            <About />
+        <div className='text-black bg-light-primary dark:text-white dark:bg-dark-primary box-border' id="app">
+            <DarkContext.Provider value={dark}>
+                <NavBar onClickToggle={darkModeHandler} />   
+                <About />
+                <Projects />
+            </DarkContext.Provider>
         </div>
 )
 }
