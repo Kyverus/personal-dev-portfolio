@@ -20,12 +20,14 @@ export default {
         light: {
           primary: '#F5F5F5',
           secondary: '#D4D4D4',
-          tertiary: '#B3B3B3'
+          tertiary: '#B3B3B3',
+          green: '#B8E0D0'
         },
         dark: {
           primary: '#080808',
           secondary: '#171717',
-          tertiary: '#3B3B3B'
+          tertiary: '#3B3B3B',
+          green: '#316F56'
         }
       }
     },

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import headerImg from '../../assets/header-picture.jpg';
+import headerImg from '../../assets/images/header-picture.jpg';
 import resumeFile from '../../assets/data/pacibe-resume.pdf';
 
 export function Banner(){
     return (
-        <div id="banner" className="bg-[#B8E0D0] dark:bg-[#316F56]">
+        <div id="banner" className="bg-light-green dark:bg-dark-green">
             <div className="lg:flex py-10 px-10">
                 <div className="lg:w-2/3">
                     <div className="rounded-2xl p-6 space-y-8">
