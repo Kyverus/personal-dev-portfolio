@@ -1,20 +1,17 @@
-import {technologies} from '../../assets/data/technology-list'
 import { TechItem } from './TechItem';
 
-export function TechList() {
+export function TechList({technologies, className, itemClass, imgClass, labelHidden}) {
+
     return(
-        <div id="technology-list" className='px-4 py-4'>
-            <div className="text-3xl font-bold text-center">TECHNOLOGIES</div>
-            <div className='flex flex-row flex-wrap justify-center py-4'>   
+        <div id="technology-list" className={(className ? className + " " : "") + 'flex flex-row flex-wrap'}>
             {
                 technologies
                 .map((technology) => {
                     return (    
-                        <TechItem key={technology.id} techName={technology.title} techSrc={technology.imgUrl} imgSize={"100px"}/>
+                        <TechItem key={technology.id} techName={technology.title} techSrc={technology.imgUrl} className={itemClass} imgClass={imgClass} labelHidden={labelHidden}/>
                     )
                 })
             }
-            </div>
         </div>
     );
 }

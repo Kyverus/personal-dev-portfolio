@@ -23,7 +23,7 @@ const projects = [
         id: "project-personal-portfolio",
         title: "Personal Dev Portfolio",
         description: "Website for showcasing technology skills and personal projects.",
-        technologies: ["React", "Javascript", "Tailwind"],
+        technologies: ["React.js", "Javascript", "Tailwind"],
         imgURL: projImg2,
         repoURL: "https://github.com/Kyverus/personal-dev-portfolio",
         siteURL: "https://kirlian-dev-portfolio.netlify.app/",

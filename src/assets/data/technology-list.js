@@ -10,7 +10,7 @@ import pixijsLogo from '../icons/pixijs-logo.svg';
 export const technologies = [
     {
         id: "tech-1",
-        title: "JavaScript",
+        title: "Javascript",
         imgUrl: javascriptLogo,
     },
     {
