@@ -1,8 +1,20 @@
-export function TechItem({techName, techSrc, className, imgClass="80px", labelHidden = false}){
-    return(
-        <span id="technology-item" className={"bg-light-secondary dark:bg-dark-secondary border-light-tertiary dark:border-dark-tertiary hover:shadow-[0_0_10px_4px_rgb(0,0,0,0.3)] hover:dark:shadow-light-tertiary hover:shadow-dark-tertiary" + (className ? " " + className : "")}>
-            <img className={(imgClass? " " + imgClass : "")} src={techSrc} alt = "" onDragStart={(e) => {e.preventDefault();}}/>
-            <div className={"text-center" + (labelHidden? " hidden" : "")}>{techName}</div>
-        </span>
-    );
-} 
+export function TechItem({ techName, techSrc, labelHidden = false }) {
+  return (
+    <span
+      id="technology-item"
+      className="bg-light-primary dark:bg-dark-primary border-light-tertiary dark:border-dark-tertiary hover:shadow-[0_0_10px_4px_rgb(0,0,0,0.3)] hover:shadow-light-tertiary hover:dark:shadow-dark-tertiary p-3 m-2 rounded-3xl border-8 space-y-2"
+    >
+      <img
+        className="size-20 rounded-2xl"
+        src={techSrc}
+        alt=""
+        onDragStart={(e) => {
+          e.preventDefault();
+        }}
+      />
+      <div className={"text-center font-bold" + (labelHidden ? " hidden" : "")}>
+        {techName}
+      </div>
+    </span>
+  );
+}
