@@ -1,17 +1,26 @@
-import { TechItem } from './TechItem';
+import { TechItem } from "./TechItem";
 
-export function TechList({technologies, className, itemClass, imgClass, labelHidden}) {
-
-    return(
-        <div id="technology-list" className={(className ? className + " " : "") + 'flex flex-row flex-wrap'}>
-            {
-                technologies
-                .map((technology) => {
-                    return (    
-                        <TechItem key={technology.id} techName={technology.title} techSrc={technology.imgUrl} className={itemClass} imgClass={imgClass} labelHidden={labelHidden}/>
-                    )
-                })
-            }
-        </div>
-    );
+export function TechList({ technologies, imgClass, labelHidden }) {
+  return (
+    <div
+      id="technology-list"
+      className="xl:container mx-auto rounded-xl py-4 space-y-4"
+    >
+      <div className="text-3xl font-bold text-center text-dark-green dark:text-light-green">
+        TECHNOLOGIES
+      </div>
+      <div className="flex flex-row flex-wrap justify-center">
+        {technologies.map((technology) => {
+          return (
+            <TechItem
+              key={technology.id}
+              techName={technology.title}
+              techSrc={technology.imgUrl}
+              labelHidden={labelHidden}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
 }
