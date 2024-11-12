@@ -13,10 +13,8 @@ import {
 } from "@heroicons/react/24/outline";
 import { CustomLink } from "./CustomLink";
 import { DarkContext } from "../App";
-import linkedinLogoLight from "../assets/icons/darkmode/linkedin-light-icon.svg";
-import githubLogoLight from "../assets/icons/darkmode/github-light-icon.svg";
-import linkedinLogoDark from "../assets/icons/darkmode/linkedin-dark-icon.svg";
-import githubLogoDark from "../assets/icons/darkmode/github-dark-icon.svg";
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 import resumeFile from "../assets/data/pacibe-resume.pdf";
 import profilePic from "../assets/images/profile-picture.jpg";
 
@@ -85,9 +83,7 @@ export function NavBar({ onClickToggle }) {
                 <div className="flex space-x-4">
                   <CustomLink path={"#about"}>About</CustomLink>
                   <CustomLink path={"#projects"}>Projects</CustomLink>
-                  <CustomLink path={resumeFile} download={"PACIBE RESUME"}>
-                    Resume
-                  </CustomLink>
+                  <CustomLink path={resumeFile}>Resume</CustomLink>
                 </div>
               </div>
             </div>
@@ -97,10 +93,9 @@ export function NavBar({ onClickToggle }) {
                 href="https://www.linkedin.com/in/kirlianpacibe12"
                 target="_blank"
               >
-                <img
+                <FaLinkedin
+                  fill={dark ? "#ffffff" : "#000000"}
                   className="size-9"
-                  src={dark ? linkedinLogoLight : linkedinLogoDark}
-                  alt="linkedin logo"
                 />
               </a>
               <a
@@ -108,10 +103,9 @@ export function NavBar({ onClickToggle }) {
                 href="https://github.com/kyverus"
                 target="_blank"
               >
-                <img
+                <FaGithub
+                  fill={dark ? "#ffffff" : "#000000"}
                   className="size-9"
-                  src={dark ? githubLogoLight : githubLogoDark}
-                  alt="github logo"
                 />
               </a>
               <button className="size-9 mx-2" onClick={() => onClickToggle()}>

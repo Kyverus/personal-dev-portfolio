@@ -6,6 +6,9 @@ import vueLogo from "../icons/vue-logo.svg";
 import laravelLogo from "../icons/laravel-logo.svg";
 import tailwindLogo from "../icons/tailwind-logo.svg";
 import bootstrapLogo from "../icons/bootstrap-logo.svg";
+import nodeLogo from "../icons/node-logo.svg";
+import mongodbLogo from "../icons/mongodb-logo.svg";
+import expressLogo from "../icons/express-logo.svg";
 
 export const technologies = [
   {
@@ -41,12 +44,22 @@ export const technologies = [
   },
   {
     id: "tech-7",
+    title: "Node.js",
+    imgUrl: nodeLogo,
+  },
+  {
+    id: "tech-8",
+    title: "Express.js",
+    imgUrl: expressLogo,
+  },
+  {
+    id: "tech-9",
     title: "PHP",
     imgUrl: phpLogo,
   },
   {
-    id: "tech-8",
-    title: "Laravel",
-    imgUrl: laravelLogo,
+    id: "tech-10",
+    title: "MongoDB",
+    imgUrl: mongodbLogo,
   },
 ];
