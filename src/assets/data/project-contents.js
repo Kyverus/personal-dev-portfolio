@@ -2,7 +2,7 @@ import personalDevImg from "../images/project-1.png";
 import taskkaiserImg from "../images/project-2.png";
 import tictactoeImg from "../images/project-3.png";
 import shopsueyImg from "../images/project-4.png";
-
+import animeabyssImg from "../images/project-5.png";
 const projects = [
   {
     id: "project-personal-portfolio",
@@ -42,6 +42,23 @@ const projects = [
     technologies: ["React.js", "Javascript", "Tailwind"],
     imgURL: shopsueyImg,
     siteURL: "https://shop-suey.vercel.app/",
+  },
+  {
+    id: "anime-abyss",
+    title: "Project: Anime Abyss (WIP)",
+    type: "Solo",
+    description:
+      "An anime website for browsing and listing entries using Vue with its own backend API",
+    technologies: [
+      "Vue.js",
+      "Typescript",
+      "Tailwind",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+    ],
+    imgURL: animeabyssImg,
+    siteURL: "https://animeabyss.vercel.app/",
   },
 ];
 

@@ -1,5 +1,3 @@
-import githubLogoLight from "../../assets/icons/darkmode/github-light-icon.svg";
-import githubLogoDark from "../../assets/icons/darkmode/github-dark-icon.svg";
 import ProjectTechList from "./ProjectTechList";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { DarkContext } from "../../App";
