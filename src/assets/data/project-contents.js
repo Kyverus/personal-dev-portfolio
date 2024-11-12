@@ -19,8 +19,8 @@ const projects = [
     title: "Project: Taskkaiser",
     type: "Solo",
     description:
-      "Task management web application for simple UI for completed, pending and dropped tasks.",
-    technologies: ["PHP", "Javascript", "Bootstrap"],
+      "Task management web application for simple UI for completed, pending and dropped tasks. Download website is made using Vue and Tailwind",
+    technologies: ["PHP", "Javascript", "Bootstrap", "Vue.js", "Tailwind"],
     imgURL: taskkaiserImg,
     siteURL: "https://taskkaiser-website.vercel.app",
   },
