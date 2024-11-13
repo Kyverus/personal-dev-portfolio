@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
 import headerImg from "../../assets/images/header-picture.jpg";
+import { IoMdMail } from "react-icons/io";
 
 export function Banner() {
   return (
@@ -17,7 +17,12 @@ export function Banner() {
               futher showcased below.
             </div>
             <div className="text-lg font-bold">
-              <a href="#contact">Contact Me</a>
+              <a href="#contact" className="flex items-center gap-3 group">
+                <span className="group-hover:text-dark-green dark:group-hover:text-light-green">
+                  Contact Me
+                </span>
+                <IoMdMail className="size-6 group-hover:text-dark-green dark:group-hover:text-light-green" />
+              </a>
             </div>
           </div>
         </div>

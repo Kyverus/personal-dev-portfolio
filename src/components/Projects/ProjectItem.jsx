@@ -22,7 +22,7 @@ export function ProjectItem({ project, className, index }) {
           : "  project-right translate-x-8 self-end flex-row-reverse")
       }
     >
-      <div className="lg:w-1/2 bg-dark-green dark:bg-light-green p-1">
+      <div className="lg:w-1/2 shadow-dark-green dark:shadow-light-green lg:shadow-[0_0_10px_2px_rgb(0,0,0,0.3)]">
         <img src={project.imgURL} alt="" />
       </div>
 
@@ -32,7 +32,9 @@ export function ProjectItem({ project, className, index }) {
           (index % 2 == 0 ? " lg:-translate-x-8" : " lg:translate-x-8")
         }
       >
-        <div className="text-center text-3xl font-bold">{project.title}</div>
+        <div className="text-center text-3xl font-bold mb-2">
+          {project.title}
+        </div>
         <div className="py-2">
           <div className="min-h-20">{project.description}</div>
           <div
