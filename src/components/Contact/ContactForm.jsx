@@ -19,8 +19,8 @@ export function ContactForm({ className }) {
     setIsLoading(true);
     emailjs
       .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        viteEnv["import.meta.env.VITE_APP_EMAILJS_SERVICE_ID"],
+        viteEnv["import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID"],
         {
           from_name: formDetails.name,
           to_name: "Kirlian",
@@ -28,7 +28,7 @@ export function ContactForm({ className }) {
           to_email: "kyverusdev@gmail.com",
           message: formDetails.message,
         },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        viteEnv["import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY"]
       )
       .then(() => {
         setIsLoading(false);
