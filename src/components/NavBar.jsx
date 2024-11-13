@@ -83,7 +83,9 @@ export function NavBar({ onClickToggle }) {
                 <div className="flex space-x-4">
                   <CustomLink path={"#about"}>About</CustomLink>
                   <CustomLink path={"#projects"}>Projects</CustomLink>
-                  <CustomLink path={resumeFile}>Resume</CustomLink>
+                  <CustomLink path={resumeFile} target={"_blank"}>
+                    Resume
+                  </CustomLink>
                 </div>
               </div>
             </div>

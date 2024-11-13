@@ -3,6 +3,7 @@ import { NavBar } from "./components/NavBar";
 import { About } from "./components/About/About";
 import { Projects } from "./components/Projects/Projects";
 import { createContext } from "react";
+import { Contact } from "./components/Contact/Contact";
 
 export const DarkContext = createContext(false);
 
@@ -30,6 +31,7 @@ function App() {
         <NavBar onClickToggle={darkModeHandler} />
         <About />
         <Projects />
+        <Contact />
       </DarkContext.Provider>
     </div>
   );
