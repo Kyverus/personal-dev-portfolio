@@ -17,10 +17,12 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import resumeFile from "../assets/data/pacibe-resume.pdf";
 import profilePic from "../assets/images/profile-picture.jpg";
+import { useScrollContext } from "../ScrollContextProvider";
 
 export function NavBar({ onClickToggle }) {
   const dark = useContext(DarkContext);
   const [scrolled, setScrolled] = useState(false);
+  const { activeSection } = useScrollContext();
 
   useEffect(() => {
     const onScroll = () => {
@@ -81,8 +83,26 @@ export function NavBar({ onClickToggle }) {
             <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
               <div className="hidden md:mx-auto md:flex items-center">
                 <div className="flex space-x-4">
-                  <CustomLink path={"#about"}>About</CustomLink>
-                  <CustomLink path={"#projects"}>Projects</CustomLink>
+                  <CustomLink
+                    path={"#about"}
+                    className={
+                      activeSection == "about"
+                        ? "text-cyan-500 font-bold text-lg"
+                        : ""
+                    }
+                  >
+                    About
+                  </CustomLink>
+                  <CustomLink
+                    path={"#projects"}
+                    className={
+                      activeSection == "projects"
+                        ? "text-cyan-500 font-bold text-lg"
+                        : ""
+                    }
+                  >
+                    Projects
+                  </CustomLink>
                   <CustomLink path={resumeFile} target={"_blank"}>
                     Resume
                   </CustomLink>
@@ -123,14 +143,30 @@ export function NavBar({ onClickToggle }) {
 
         <DisclosurePanel className="md:hidden">
           <div className="space-y-1 px-2 pb-3 pt-2">
-            <CloseButton as={CustomLink} path={"#"}>
-              Home
+            <CloseButton
+              as={CustomLink}
+              path={"#about"}
+              className={
+                activeSection == "about"
+                  ? "text-cyan-500 font-bold text-lg"
+                  : ""
+              }
+            >
+              About
             </CloseButton>
-            <CloseButton as={CustomLink} path={"#projects"}>
+            <CloseButton
+              as={CustomLink}
+              path={"#projects"}
+              className={
+                activeSection == "projects"
+                  ? "text-cyan-500 font-bold text-lg"
+                  : ""
+              }
+            >
               Projects
             </CloseButton>
-            <CloseButton as={CustomLink} path={"#contact"}>
-              Contact
+            <CloseButton as={CustomLink} path={resumeFile} target={"_blank"}>
+              Resume
             </CloseButton>
           </div>
         </DisclosurePanel>

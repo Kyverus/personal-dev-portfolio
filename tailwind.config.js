@@ -4,6 +4,9 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      screens: {
+        xs: "576px",
+      },
       keyframes: {
         updown: {
           "0%, 100%": { transform: "translateY(-10px)" },

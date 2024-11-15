@@ -4,13 +4,13 @@ import { IoMdMail } from "react-icons/io";
 export function Banner() {
   return (
     <div id="banner" className="xl:container mx-auto xl:px-28">
-      <div className="lg:flex py-10 px-10">
+      <div className="lg:flex py-10 px-5 xs:px-10">
         <div className="lg:w-2/3">
-          <div className="rounded-2xl p-6 space-y-8">
-            <div className="mt-10 text-5xl font-bold text-left text-dark-green dark:text-light-green">
+          <div className="rounded-2xl py-6 xs:px-6 space-y-8">
+            <div className="mt-10 text-5xl font-bold text-center xs:text-left text-dark-green dark:text-light-green">
               Web Developer
             </div>
-            <div className="text-md text-justify indent-12 tracking-wider">
+            <div className="text-sm xs:text-base text- text-justify indent-12 tracking-wider">
               Hello, I'm Kirlian Pacibe, I have fundamental knowledge in
               building simple and functional websites and applications. I have
               made personal projects regarding web and desktop applications
