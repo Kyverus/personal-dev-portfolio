@@ -4,6 +4,7 @@ import { About } from "./components/About/About";
 import { Projects } from "./components/Projects/Projects";
 import { createContext } from "react";
 import { Contact } from "./components/Contact/Contact";
+import { ScrollContextProvider } from "./ScrollContextProvider";
 
 export const DarkContext = createContext(false);
 
@@ -27,12 +28,14 @@ function App() {
       className="text-black bg-light-primary dark:text-white dark:bg-dark-primary box-border"
       id="app"
     >
-      <DarkContext.Provider value={dark}>
-        <NavBar onClickToggle={darkModeHandler} />
-        <About />
-        <Projects />
-        <Contact />
-      </DarkContext.Provider>
+      <ScrollContextProvider>
+        <DarkContext.Provider value={dark}>
+          <NavBar onClickToggle={darkModeHandler} />
+          <About />
+          <Projects />
+          <Contact />
+        </DarkContext.Provider>
+      </ScrollContextProvider>
     </div>
   );
 }

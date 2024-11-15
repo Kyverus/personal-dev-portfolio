@@ -39,16 +39,28 @@ export function ProjectItem({ project, className, index }) {
           <div className="min-h-20">{project.description}</div>
           <div
             className={
-              "flex justify-between items-center" +
+              "xs:flex justify-between items-start gap-3" +
               (index % 2 == 0 ? "" : " flex-row-reverse")
             }
           >
-            <a href={project.siteURL} target="_blank">
-              <ArrowTopRightOnSquareIcon
-                color={dark ? "#ffffff" : "#000000"}
-                className="size-6"
-              />
-            </a>
+            <div className="hidden xs:block">
+              <a href={project.siteURL} target="_blank">
+                <ArrowTopRightOnSquareIcon
+                  color={dark ? "#ffffff" : "#000000"}
+                  className="size-6"
+                />
+              </a>
+            </div>
+
+            <div className="xs:hidden my-4 text-center">
+              <a
+                href={project.siteURL}
+                target="_blank"
+                className="text-dark-green dark:text-light-green"
+              >
+                Project Link
+              </a>
+            </div>
 
             <ProjectTechList technologies={projectTechs} ltr={index % 2 == 0} />
           </div>
