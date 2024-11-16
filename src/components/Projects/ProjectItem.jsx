@@ -1,5 +1,6 @@
 import ProjectTechList from "./ProjectTechList";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import { FiLink } from "react-icons/fi";
 import { DarkContext } from "../../App";
 import { useContext } from "react";
 import { technologies } from "../../assets/data/technology-list";
@@ -47,20 +48,21 @@ export function ProjectItem({ project, className, index }) {
               <a
                 href={project.siteURL}
                 target="_blank"
-                className="text-base-green flex gap-2 group hover:text-base-cyan"
+                className="text-base-green flex gap-2 group hover:text-base-cyan font-bold"
               >
                 LINK
                 <ArrowTopRightOnSquareIcon className="size-6 group-hover:text-base-cyan" />
               </a>
             </div>
 
-            <div className="xs:hidden my-4 text-center">
+            <div className="xs:hidden my-4 text-center flex items-center justify-center">
               <a
                 href={project.siteURL}
                 target="_blank"
-                className="text-base-green hover:text-base-cyan"
+                className="text-base-green hover:text-base-cyan flex gap-1 items-center"
               >
-                Project Link
+                <FiLink className="size-4" />
+                <span>Project Link</span>
               </a>
             </div>
 
