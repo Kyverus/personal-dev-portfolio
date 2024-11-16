@@ -10,7 +10,7 @@ const projects = [
     type: "Solo",
     description:
       "Website for showcasing technology skills and personal projects.",
-    technologies: ["React.js", "Javascript", "Tailwind"],
+    technologies: ["React.js", "Tailwind"],
     imgURL: personalDevImg,
     siteURL: "https://kirlian-dev-portfolio.netlify.app/",
   },
@@ -19,8 +19,8 @@ const projects = [
     title: "Project: Taskkaiser",
     type: "Solo",
     description:
-      "Task management web application for simple UI for completed, pending and dropped tasks. Download website is made using Vue and Tailwind",
-    technologies: ["PHP", "Javascript", "Bootstrap", "Vue.js", "Tailwind"],
+      "Task management web application with customizable features like tags and types. Download website is made using Vue and Tailwind",
+    technologies: ["PHP", "Bootstrap", "Vue.js", "Tailwind"],
     imgURL: taskkaiserImg,
     siteURL: "https://taskkaiser-website.vercel.app",
   },
@@ -29,7 +29,7 @@ const projects = [
     title: "Project: Super Tic-Tac-Toe",
     type: "Team",
     description: "Ultimate Tic-tac-toe game developed using React js.",
-    technologies: ["React.js", "Javascript", "Tailwind"],
+    technologies: ["React.js", "Tailwind"],
     imgURL: tictactoeImg,
     siteURL: "https://s-tic-tac-toe.vercel.app/",
   },
@@ -39,7 +39,7 @@ const projects = [
     type: "Team",
     description:
       "E-commerce Website developed using React.js with fakestore API",
-    technologies: ["React.js", "Javascript", "Tailwind"],
+    technologies: ["React.js", "Tailwind"],
     imgURL: shopsueyImg,
     siteURL: "https://shop-suey.vercel.app/",
   },

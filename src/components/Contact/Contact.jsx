@@ -31,7 +31,7 @@ export function Contact() {
 
   return (
     <div
-      className="min-h-dvh pt-24 pb-8 space-y-8 text-black dark:text-white"
+      className="page-section min-h-dvh pt-24 pb-8 space-y-8 text-black dark:text-white"
       id="contact"
     >
       <div className="xl:w-[1280px] mx-auto">

@@ -10,8 +10,10 @@ export function CustomLink({
     <a
       href={path}
       className={
-        "rounded-md px-3 py-2 md:text-lg block md:inline text-dark-2 hover:text-black dark:text-light-2 dark:hover:text-white" +
-        (className ? " " + className : " font-medium text-base")
+        "rounded-md px-3 py-2 md:text-lg block md:inline font-medium" +
+        (className
+          ? " " + className
+          : " hover:text-dark-green hover:brightness-200")
       }
       onClick={onClick}
       download={download}
