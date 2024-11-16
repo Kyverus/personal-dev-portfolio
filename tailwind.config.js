@@ -21,6 +21,10 @@ export default {
         height: "height",
       },
       colors: {
+        base: {
+          cyan: "#06b6d4",
+          green: "#3F8F6E",
+        },
         light: {
           primary: "#F5F5F5",
           secondary: "#D4D4D4",

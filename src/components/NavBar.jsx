@@ -15,7 +15,6 @@ import { CustomLink } from "./CustomLink";
 import { DarkContext } from "../App";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
-import resumeFile from "../assets/data/pacibe-resume.pdf";
 import profilePic from "../assets/images/profile-picture.jpg";
 import { useScrollContext } from "../ScrollContextProvider";
 
@@ -52,7 +51,7 @@ export function NavBar({ onClickToggle }) {
         className={
           "transition-[all,_height] duration-700 origin-center w-full" +
           (scrolled
-            ? " bg-light-secondary dark:bg-dark-secondary md:bg-light-secondary/80 md:dark:bg-dark-secondary/80 py-0 text-dark-green dark:text-light-green"
+            ? " bg-light-secondary dark:bg-dark-secondary shadow-[0_0_2px_1px_rgb(0,0,0,0.3)] md:shadow-none md:bg-light-secondary/80 md:dark:bg-dark-secondary/80 py-0 text-dark-green dark:text-light-green"
             : " mt-5 py-2 rounded-xl bg-light-green dark:bg-dark-green")
         }
       >
@@ -73,10 +72,9 @@ export function NavBar({ onClickToggle }) {
                 />
               </DisclosureButton>
             </div>
-            <div className="w-40 flex justify-center">
+            <div className="w-40 hidden md:flex justify-center">
               <img
                 src={profilePic}
-                alt=""
                 className="size-14 md:size-16 rounded-full"
               />
             </div>
@@ -85,26 +83,25 @@ export function NavBar({ onClickToggle }) {
                 <div className="flex space-x-4">
                   <CustomLink
                     path={"#about"}
-                    className={
-                      activeSection == "about"
-                        ? "text-cyan-500 font-bold text-lg"
-                        : ""
-                    }
+                    className={activeSection == "about" ? "text-base-cyan" : ""}
                   >
                     About
                   </CustomLink>
                   <CustomLink
                     path={"#projects"}
                     className={
-                      activeSection == "projects"
-                        ? "text-cyan-500 font-bold text-lg"
-                        : ""
+                      activeSection == "projects" ? "text-base-cyan" : ""
                     }
                   >
                     Projects
                   </CustomLink>
-                  <CustomLink path={resumeFile} target={"_blank"}>
-                    Resume
+                  <CustomLink
+                    path={"#contact"}
+                    className={
+                      activeSection == "contact" ? "text-base-cyan" : ""
+                    }
+                  >
+                    Contact
                   </CustomLink>
                 </div>
               </div>
@@ -115,26 +112,20 @@ export function NavBar({ onClickToggle }) {
                 href="https://www.linkedin.com/in/kirlianpacibe12"
                 target="_blank"
               >
-                <FaLinkedin
-                  fill={dark ? "#ffffff" : "#000000"}
-                  className="size-9"
-                />
+                <FaLinkedin className="size-9 hover:text-base-green active:text-base-cyan" />
               </a>
               <a
                 className="mx-2"
                 href="https://github.com/kyverus"
                 target="_blank"
               >
-                <FaGithub
-                  fill={dark ? "#ffffff" : "#000000"}
-                  className="size-9"
-                />
+                <FaGithub className="size-9 hover:text-base-green active:text-base-cyan" />
               </a>
-              <button className="size-9 mx-2" onClick={() => onClickToggle()}>
+              <button className="mx-2" onClick={() => onClickToggle()}>
                 {dark ? (
-                  <SunIcon color="#ffffff" />
+                  <SunIcon className="size-9 hover:text-base-green active:text-base-cyan" />
                 ) : (
-                  <MoonIcon color="#000000" />
+                  <MoonIcon className="size-9 hover:text-base-green active:text-base-cyan" />
                 )}
               </button>
             </div>
@@ -146,27 +137,23 @@ export function NavBar({ onClickToggle }) {
             <CloseButton
               as={CustomLink}
               path={"#about"}
-              className={
-                activeSection == "about"
-                  ? "text-cyan-500 font-bold text-lg"
-                  : ""
-              }
+              className={activeSection == "about" ? "text-base-cyan" : ""}
             >
               About
             </CloseButton>
             <CloseButton
               as={CustomLink}
               path={"#projects"}
-              className={
-                activeSection == "projects"
-                  ? "text-cyan-500 font-bold text-lg"
-                  : ""
-              }
+              className={activeSection == "projects" ? "text-base-cyan" : ""}
             >
               Projects
             </CloseButton>
-            <CloseButton as={CustomLink} path={resumeFile} target={"_blank"}>
-              Resume
+            <CloseButton
+              as={CustomLink}
+              path={"#contact"}
+              className={activeSection == "contact" ? "text-base-cyan" : ""}
+            >
+              Contact
             </CloseButton>
           </div>
         </DisclosurePanel>

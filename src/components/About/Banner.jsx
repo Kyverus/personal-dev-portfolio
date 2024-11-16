@@ -1,5 +1,5 @@
 import headerImg from "../../assets/images/header-picture.jpg";
-import { IoMdMail } from "react-icons/io";
+import { FaFilePdf } from "react-icons/fa6";
 
 export function Banner() {
   return (
@@ -8,7 +8,7 @@ export function Banner() {
         <div className="lg:w-2/3">
           <div className="rounded-2xl py-6 xs:px-6 space-y-8">
             <div className="mt-10 text-5xl font-bold text-center xs:text-left text-dark-green dark:text-light-green">
-              Web Developer
+              Full-Stack Web Developer
             </div>
             <div className="text-sm xs:text-base text- text-justify indent-12 tracking-wider">
               Hello, I'm Kirlian Pacibe, I have fundamental knowledge in
@@ -16,12 +16,15 @@ export function Banner() {
               made personal projects regarding web and desktop applications
               futher showcased below.
             </div>
-            <div className="text-lg font-bold">
-              <a href="#contact" className="flex items-center gap-3 group">
-                <span className="group-hover:text-dark-green dark:group-hover:text-light-green">
-                  Contact Me
+            <div className="flex text-lg font-bold">
+              <a
+                href="#resume"
+                className="flex items-center gap-3 group text-base-green"
+              >
+                <span className="group-hover:text-base-cyan">
+                  Check Out My Resume
                 </span>
-                <IoMdMail className="size-6 group-hover:text-dark-green dark:group-hover:text-light-green" />
+                <FaFilePdf className="size-5 group-hover:text-base-cyan" />
               </a>
             </div>
           </div>

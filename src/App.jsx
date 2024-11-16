@@ -5,6 +5,7 @@ import { Projects } from "./components/Projects/Projects";
 import { createContext } from "react";
 import { Contact } from "./components/Contact/Contact";
 import { ScrollContextProvider } from "./ScrollContextProvider";
+import { Resume } from "./components/Resume/Resume";
 
 export const DarkContext = createContext(false);
 
@@ -32,6 +33,7 @@ function App() {
         <DarkContext.Provider value={dark}>
           <NavBar onClickToggle={darkModeHandler} />
           <About />
+          <Resume />
           <Projects />
           <Contact />
         </DarkContext.Provider>

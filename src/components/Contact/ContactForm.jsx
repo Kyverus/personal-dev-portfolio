@@ -117,7 +117,7 @@ export function ContactForm({ className }) {
           <button
             type="submit"
             disabled={isLoading}
-            className="mt-6 w-[400px] h-11 bg-light-green dark:bg-dark-green active:bg-dark-green dark:active:bg-light-green active:text-light-primary dark:active:text-dark-primary active:scale-[1.05]"
+            className="mt-6 w-[400px] h-11 bg-light-green dark:bg-dark-green active:bg-base-cyan dark:active:bg-base-cyan active:text-light-primary dark:active:text-dark-primary active:scale-[1.05] hover:bg-base-green dark:hover:bg-base-green"
           >
             {isLoading ? "Sending..." : "Send Message"}
           </button>

@@ -22,17 +22,17 @@ export function ProjectItem({ project, className, index }) {
           : "  project-right translate-x-8 self-end flex-row-reverse")
       }
     >
-      <div className="lg:w-1/2 shadow-dark-green dark:shadow-light-green lg:shadow-[0_0_10px_2px_rgb(0,0,0,0.3)]">
+      <div className="lg:w-1/2 lg:shadow-light-tertiary lg:dark:shadow-dark-tertiary lg:shadow-[0_0_5px_1px_rgb(0,0,0,0.3)]">
         <img src={project.imgURL} alt="" />
       </div>
 
       <div
         className={
-          "flex flex-col justify-between self-end mb-5 bg-light-secondary dark:bg-dark-secondary lg:w-1/2 lg:h-auto lg:rounded-xl relative z-10 p-5" +
+          "flex flex-col justify-between self-end mb-5 bg-white/90 dark:bg-dark-secondary/90 lg:w-1/2 lg:h-auto lg:rounded-xl relative z-10 p-5" +
           (index % 2 == 0 ? " lg:-translate-x-8" : " lg:translate-x-8")
         }
       >
-        <div className="text-center text-3xl font-bold mb-2">
+        <div className="text-center text-3xl font-bold mb-2 text-dark-green dark:text-light-green">
           {project.title}
         </div>
         <div className="py-2">
@@ -44,11 +44,13 @@ export function ProjectItem({ project, className, index }) {
             }
           >
             <div className="hidden xs:block">
-              <a href={project.siteURL} target="_blank">
-                <ArrowTopRightOnSquareIcon
-                  color={dark ? "#ffffff" : "#000000"}
-                  className="size-6"
-                />
+              <a
+                href={project.siteURL}
+                target="_blank"
+                className="text-base-green flex gap-2 group hover:text-base-cyan"
+              >
+                LINK
+                <ArrowTopRightOnSquareIcon className="size-6 group-hover:text-base-cyan" />
               </a>
             </div>
 
@@ -56,7 +58,7 @@ export function ProjectItem({ project, className, index }) {
               <a
                 href={project.siteURL}
                 target="_blank"
-                className="text-dark-green dark:text-light-green"
+                className="text-base-green hover:text-base-cyan"
               >
                 Project Link
               </a>

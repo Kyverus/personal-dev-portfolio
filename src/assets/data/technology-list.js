@@ -10,6 +10,7 @@ import nodeLogo from "../icons/node-logo.svg";
 import mongodbLogo from "../icons/mongodb-logo.svg";
 import expressLogo from "../icons/express-logo.svg";
 
+//html, css and javascript inclusion is unnecessary
 export const technologies = [
   {
     id: "tech-1",
@@ -21,44 +22,38 @@ export const technologies = [
     title: "Vue.js",
     imgUrl: vueLogo,
   },
-
   {
     id: "tech-3",
-    title: "Javascript",
-    imgUrl: javascriptLogo,
-  },
-  {
-    id: "tech-4",
     title: "Typescript",
     imgUrl: typescriptLogo,
   },
   {
-    id: "tech-5",
+    id: "tech-4",
     title: "Tailwind",
     imgUrl: tailwindLogo,
   },
   {
-    id: "tech-6",
+    id: "tech-5",
     title: "Bootstrap",
     imgUrl: bootstrapLogo,
   },
   {
-    id: "tech-7",
+    id: "tech-6",
     title: "Node.js",
     imgUrl: nodeLogo,
   },
   {
-    id: "tech-8",
+    id: "tech-7",
     title: "Express.js",
     imgUrl: expressLogo,
   },
   {
-    id: "tech-9",
+    id: "tech-8",
     title: "PHP",
     imgUrl: phpLogo,
   },
   {
-    id: "tech-10",
+    id: "tech-9",
     title: "MongoDB",
     imgUrl: mongodbLogo,
   },
