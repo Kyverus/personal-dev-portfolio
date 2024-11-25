@@ -8,7 +8,7 @@ export function Banner() {
         <div className="lg:w-2/3">
           <div className="rounded-2xl py-6 xs:px-6 space-y-8">
             <div className="mt-10 text-5xl font-bold text-center xs:text-left text-dark-green dark:text-light-green">
-              Full-Stack Web Developer
+              Web Developer
             </div>
             <div className="text-sm xs:text-base text- text-justify indent-12 tracking-wider">
               Hello, I'm Kirlian Pacibe, I have fundamental knowledge in

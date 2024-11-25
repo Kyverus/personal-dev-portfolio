@@ -1,6 +1,9 @@
 import { TechItem } from "./TechItem";
 
 export function TechList({ technologies, imgClass, labelHidden }) {
+  const mainTechnologies = technologies.filter((technology) => {
+    return technology.main;
+  });
   return (
     <div
       id="technology-list"
@@ -10,7 +13,7 @@ export function TechList({ technologies, imgClass, labelHidden }) {
         TECHNOLOGIES
       </div>
       <div className="flex flex-row flex-wrap justify-center">
-        {technologies.map((technology) => {
+        {mainTechnologies.map((technology) => {
           return (
             <TechItem
               key={technology.id}
