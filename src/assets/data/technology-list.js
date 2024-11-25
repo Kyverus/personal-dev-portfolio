@@ -14,46 +14,55 @@ import expressLogo from "../icons/express-logo.svg";
 export const technologies = [
   {
     id: "tech-1",
+    main: true,
     title: "React.js",
     imgUrl: reactLogo,
   },
   {
     id: "tech-2",
+    main: true,
     title: "Vue.js",
     imgUrl: vueLogo,
   },
   {
     id: "tech-3",
+    main: true,
     title: "Typescript",
     imgUrl: typescriptLogo,
   },
   {
     id: "tech-4",
+    main: true,
     title: "Tailwind",
     imgUrl: tailwindLogo,
   },
   {
     id: "tech-5",
+    main: false,
     title: "Bootstrap",
     imgUrl: bootstrapLogo,
   },
   {
     id: "tech-6",
+    main: false,
     title: "Node.js",
     imgUrl: nodeLogo,
   },
   {
     id: "tech-7",
+    main: true,
     title: "Express.js",
     imgUrl: expressLogo,
   },
   {
     id: "tech-8",
+    main: true,
     title: "PHP",
     imgUrl: phpLogo,
   },
   {
     id: "tech-9",
+    main: true,
     title: "MongoDB",
     imgUrl: mongodbLogo,
   },
