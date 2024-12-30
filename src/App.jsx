@@ -22,43 +22,41 @@ import Test from "./Test";
 
 function App() {
   return (
-    <div
-      className="text-black bg-light-primary dark:text-white dark:bg-dark-primary box-border"
-      id="app"
-    >
-      <BrowserRouter>
-        <ScrollContextProvider>
-          <DarkContextProvider>
-            <TechnologyContextProvider>
-              <ProjectContextProvider>
-                <div>
-                  <Routes>
-                    <Route path="/" element={<PortfolioPage />} />
-                    <Route path="/testing" element={<Test />} />
-                    <Route element={<AuthContextLayout />}>
-                      <Route element={<AuthRouteHandler />}>
-                        <Route path="/login" element={<LoginPage />} />
-                        <Route path="/admin" element={<AdminLayout />}>
-                          <Route index element={<AdminDashboard />} />
-                          <Route path="projects">
-                            <Route index element={<AdminProjects />} />
-                            <Route path="add" element={<AddProject />} />
-                          </Route>
-                          <Route path="technologies">
-                            <Route index element={<AdminTechnologies />} />
-                            <Route path="add" element={<AddTechnology />} />
-                          </Route>
+    <BrowserRouter>
+      <ScrollContextProvider>
+        <DarkContextProvider>
+          <TechnologyContextProvider>
+            <ProjectContextProvider>
+              <div
+                className="text-black bg-light-primary dark:text-white dark:bg-dark-primary box-border"
+                id="app"
+              >
+                <Routes>
+                  <Route path="/" element={<PortfolioPage />} />
+                  <Route path="/testing" element={<Test />} />
+                  <Route element={<AuthContextLayout />}>
+                    <Route element={<AuthRouteHandler />}>
+                      <Route path="/login" element={<LoginPage />} />
+                      <Route path="/admin" element={<AdminLayout />}>
+                        <Route index element={<AdminDashboard />} />
+                        <Route path="projects">
+                          <Route index element={<AdminProjects />} />
+                          <Route path="add" element={<AddProject />} />
+                        </Route>
+                        <Route path="technologies">
+                          <Route index element={<AdminTechnologies />} />
+                          <Route path="add" element={<AddTechnology />} />
                         </Route>
                       </Route>
                     </Route>
-                  </Routes>
-                </div>
-              </ProjectContextProvider>
-            </TechnologyContextProvider>
-          </DarkContextProvider>
-        </ScrollContextProvider>
-      </BrowserRouter>
-    </div>
+                  </Route>
+                </Routes>
+              </div>
+            </ProjectContextProvider>
+          </TechnologyContextProvider>
+        </DarkContextProvider>
+      </ScrollContextProvider>
+    </BrowserRouter>
   );
 }
 
