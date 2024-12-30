@@ -1,42 +1,58 @@
-import { useState, useEffect } from "react";
-import { NavBar } from "./components/NavBar";
-import { About } from "./components/About/About";
-import { Projects } from "./components/Projects/Projects";
-import { createContext } from "react";
-import { Contact } from "./components/Contact/Contact";
-import { ScrollContextProvider } from "./ScrollContextProvider";
-import { Resume } from "./components/Resume/Resume";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 
-export const DarkContext = createContext(false);
+import { DarkContextProvider } from "./_contexts/DarkContextProvider";
+import { ScrollContextProvider } from "./_contexts/ScrollContextProvider";
+import { ProjectContextProvider } from "./_contexts/ProjectContextProvider";
+import { TechnologyContextProvider } from "./_contexts/TechnologyContextProvider";
+
+import PortfolioPage from "./portfolio/PortfolioPage";
+import LoginPage from "./admin/auth/LoginPage";
+
+import AuthRouteHandler from "./admin/auth/routes/AuthRouteHandler";
+import AuthContextLayout from "./admin/auth/routes/AuthContextLayout";
+
+import AdminProjects from "./admin/components/projects/AdminProjects";
+import AdminLayout from "./admin/AdminLayout";
+import AdminDashboard from "./admin/components/dashboard/AdminDashboard";
+
+import AddProject from "./admin/components/projects/AddProject";
+import AdminTechnologies from "./admin/components/technologies/AdminTechnologies";
+import AddTechnology from "./admin/components/technologies/AddTechnology";
 
 function App() {
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      setDark(true);
-      document.body.classList.add("dark");
-    }
-  }, []);
-
-  const darkModeHandler = () => {
-    setDark(!dark);
-    document.body.classList.toggle("dark");
-  };
-
   return (
     <div
       className="text-black bg-light-primary dark:text-white dark:bg-dark-primary box-border"
       id="app"
     >
       <ScrollContextProvider>
-        <DarkContext.Provider value={dark}>
-          <NavBar onClickToggle={darkModeHandler} />
-          <About />
-          <Resume />
-          <Projects />
-          <Contact />
-        </DarkContext.Provider>
+        <DarkContextProvider>
+          <TechnologyContextProvider>
+            <ProjectContextProvider>
+              <BrowserRouter>
+                <Routes>
+                  <Route path="/" element={<PortfolioPage />} />
+                  <Route element={<AuthContextLayout />}>
+                    <Route element={<AuthRouteHandler />}>
+                      <Route path="/login" element={<LoginPage />} />
+                      <Route path="/admin" element={<AdminLayout />}>
+                        <Route index element={<AdminDashboard />} />
+                        <Route path="projects">
+                          <Route index element={<AdminProjects />} />
+                          <Route path="add" element={<AddProject />} />
+                        </Route>
+                        <Route path="technologies">
+                          <Route index element={<AdminTechnologies />} />
+                          <Route path="add" element={<AddTechnology />} />
+                        </Route>
+                      </Route>
+                    </Route>
+                  </Route>
+                </Routes>
+              </BrowserRouter>
+            </ProjectContextProvider>
+          </TechnologyContextProvider>
+        </DarkContextProvider>
       </ScrollContextProvider>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import {
   Disclosure,
   DisclosureButton,
@@ -12,14 +12,14 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { CustomLink } from "./CustomLink";
-import { DarkContext } from "../App";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import profilePic from "../assets/images/profile-picture.jpg";
-import { useScrollContext } from "../ScrollContextProvider";
+import { useScrollContext } from "../../_contexts/ScrollContextProvider";
+import { useDarkContext } from "../../_contexts/DarkContextProvider";
 
-export function NavBar({ onClickToggle }) {
-  const dark = useContext(DarkContext);
+export function NavBar() {
+  const { dark, darkModeHandler } = useDarkContext();
   const [scrolled, setScrolled] = useState(false);
   const { activeSection } = useScrollContext();
 
@@ -121,7 +121,7 @@ export function NavBar({ onClickToggle }) {
               >
                 <FaGithub className="size-9 hover:text-base-green active:text-base-cyan" />
               </a>
-              <button className="mx-2" onClick={() => onClickToggle()}>
+              <button className="mx-2" onClick={() => darkModeHandler()}>
                 {dark ? (
                   <SunIcon className="size-9 hover:text-base-green active:text-base-cyan" />
                 ) : (

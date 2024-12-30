@@ -10,7 +10,7 @@ export function TechList({ technologies, imgClass, labelHidden }) {
       className="xl:container mx-auto rounded-xl py-4 space-y-4"
     >
       <div className="text-3xl font-bold text-center text-dark-green dark:text-light-green">
-        TECHNOLOGIES
+        MAIN TECHNOLOGIES
       </div>
       <div className="flex flex-row flex-wrap justify-center">
         {mainTechnologies.map((technology) => {
