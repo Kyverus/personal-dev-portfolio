@@ -18,6 +18,7 @@ import AdminDashboard from "./admin/components/dashboard/AdminDashboard";
 import AddProject from "./admin/components/projects/AddProject";
 import AdminTechnologies from "./admin/components/technologies/AdminTechnologies";
 import AddTechnology from "./admin/components/technologies/AddTechnology";
+import Test from "./Test";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
               <BrowserRouter>
                 <Routes>
                   <Route path="/" element={<PortfolioPage />} />
+                  <Route path="/testing" element={<Test />} />
                   <Route element={<AuthContextLayout />}>
                     <Route element={<AuthRouteHandler />}>
                       <Route path="/login" element={<LoginPage />} />
