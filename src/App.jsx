@@ -31,26 +31,28 @@ function App() {
           <DarkContextProvider>
             <TechnologyContextProvider>
               <ProjectContextProvider>
-                <Routes>
-                  <Route path="/" element={<PortfolioPage />} />
-                  <Route path="/testing" element={<Test />} />
-                  <Route element={<AuthContextLayout />}>
-                    <Route element={<AuthRouteHandler />}>
-                      <Route path="/login" element={<LoginPage />} />
-                      <Route path="/admin" element={<AdminLayout />}>
-                        <Route index element={<AdminDashboard />} />
-                        <Route path="projects">
-                          <Route index element={<AdminProjects />} />
-                          <Route path="add" element={<AddProject />} />
-                        </Route>
-                        <Route path="technologies">
-                          <Route index element={<AdminTechnologies />} />
-                          <Route path="add" element={<AddTechnology />} />
+                <div>
+                  <Routes>
+                    <Route path="/" element={<PortfolioPage />} />
+                    <Route path="/testing" element={<Test />} />
+                    <Route element={<AuthContextLayout />}>
+                      <Route element={<AuthRouteHandler />}>
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/admin" element={<AdminLayout />}>
+                          <Route index element={<AdminDashboard />} />
+                          <Route path="projects">
+                            <Route index element={<AdminProjects />} />
+                            <Route path="add" element={<AddProject />} />
+                          </Route>
+                          <Route path="technologies">
+                            <Route index element={<AdminTechnologies />} />
+                            <Route path="add" element={<AddTechnology />} />
+                          </Route>
                         </Route>
                       </Route>
                     </Route>
-                  </Route>
-                </Routes>
+                  </Routes>
+                </div>
               </ProjectContextProvider>
             </TechnologyContextProvider>
           </DarkContextProvider>
