@@ -26,11 +26,11 @@ function App() {
       className="text-black bg-light-primary dark:text-white dark:bg-dark-primary box-border"
       id="app"
     >
-      <ScrollContextProvider>
-        <DarkContextProvider>
-          <TechnologyContextProvider>
-            <ProjectContextProvider>
-              <BrowserRouter>
+      <BrowserRouter>
+        <ScrollContextProvider>
+          <DarkContextProvider>
+            <TechnologyContextProvider>
+              <ProjectContextProvider>
                 <Routes>
                   <Route path="/" element={<PortfolioPage />} />
                   <Route path="/testing" element={<Test />} />
@@ -51,11 +51,11 @@ function App() {
                     </Route>
                   </Route>
                 </Routes>
-              </BrowserRouter>
-            </ProjectContextProvider>
-          </TechnologyContextProvider>
-        </DarkContextProvider>
-      </ScrollContextProvider>
+              </ProjectContextProvider>
+            </TechnologyContextProvider>
+          </DarkContextProvider>
+        </ScrollContextProvider>
+      </BrowserRouter>
     </div>
   );
 }
