@@ -1,12 +1,11 @@
 import ProjectTechList from "./ProjectTechList";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { FiLink } from "react-icons/fi";
-import { DarkContext } from "../../App";
-import { useContext } from "react";
 import { technologies } from "../../assets/data/technology-list";
+import { useDarkContext } from "../../../_contexts/DarkContextProvider";
 
 export function ProjectItem({ project, className, index }) {
-  const dark = useContext(DarkContext);
+  const { dark } = useDarkContext();
 
   const projectTechs = technologies.filter((technology) => {
     const techs = project.technologies;
