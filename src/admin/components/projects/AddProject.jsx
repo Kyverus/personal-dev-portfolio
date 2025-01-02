@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useProjectContext } from "../../../_contexts/ProjectContextProvider";
 import { useNavigate } from "react-router-dom";
+import TechnologySelect from "./TechnologySelect";
 
 export default function AddProject() {
   const navigate = useNavigate();
@@ -23,8 +24,13 @@ export default function AddProject() {
     setFormDetails({ ...formDetails, image: e.target.files[0] });
   }
 
+  function techChange(value) {
+    setFormDetails({ ...formDetails, technologies: value });
+  }
+
   async function handleAddProject(e) {
     e.preventDefault();
+    setLoading(true);
 
     const formData = new FormData();
     formData.append("title", formDetails.title);
@@ -41,74 +47,95 @@ export default function AddProject() {
     } else {
       console.log(res.errors);
     }
+
+    setLoading(false);
   }
   return (
-    <>
-      <form encType="multipart/form-data">
-        <div>
-          <label htmlFor="title">Title: </label>
+    <div className="xl:w-[1280px] mx-auto rounded-xl p-4">
+      <form
+        encType="multipart/form-data"
+        className="w-full text-xl flex flex-col space-y-10"
+      >
+        <div className="flex flex-col space-y-3">
+          <label className="text-light-green" htmlFor="title">
+            Title:
+          </label>
           <input
             type="text"
             id="title"
             name="title"
             onChange={formChange}
-            className="text-black "
+            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
         </div>
-        <div>
-          <label htmlFor="type">Type: </label>
+        <div className="flex flex-col space-y-3">
+          <label className="text-light-green" htmlFor="type">
+            Type:
+          </label>
           <input
             type="text"
             id="type"
             name="type"
             onChange={formChange}
-            className="text-black "
+            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
         </div>
-        <div>
-          <label htmlFor="description">Description: </label>
+        <div className="flex flex-col space-y-3">
+          <label className="text-light-green" htmlFor="description">
+            Description:
+          </label>
           <input
             type="text"
             id="description"
             name="description"
             onChange={formChange}
-            className="text-black "
+            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
         </div>
-        <div>
-          <label htmlFor="technologies">Technologies: </label>
-          <input
-            type="text"
-            id="technologies"
-            name="technologies"
-            onChange={formChange}
-            className="text-black "
-          />
+        <div className="flex flex-col space-y-3">
+          <label className="text-light-green" htmlFor="technologies">
+            Technologies:
+          </label>
+          <TechnologySelect setTechnologies={techChange} />
         </div>
-        <div>
-          <label htmlFor="siteURL">Site URL: </label>
+        <div className="flex flex-col space-y-3">
+          <label className="text-light-green" htmlFor="siteURL">
+            Site URL:
+          </label>
           <input
             type="text"
             id="siteURL"
             name="siteURL"
             onChange={formChange}
-            className="text-black "
+            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
         </div>
-        <div>
-          <label htmlFor="image">Project Image: </label>
+        <div className="flex flex-col space-y-3">
+          <label
+            className="text-light-green pointer-events-none"
+            htmlFor="image"
+          >
+            Project Image:
+          </label>
           <input
             type="file"
             id="image"
             name="image"
             onChange={projectImageChange}
-            className="text-black "
+            className="text-light-green file:mr-4 file:p-1 file:bg-dark-green file:border-none file:hover:bg-base-green file:text-light-primary file:rounded-md file:pointer-events-auto pointer-events-none"
           />
         </div>
-        <button type="submit" disabled={loading} onClick={handleAddProject}>
-          ADD PROJECT
-        </button>
+        <div className="flex justify-center items-center">
+          <button
+            type="submit"
+            disabled={loading}
+            onClick={handleAddProject}
+            className="bg-dark-green hover:bg-base-green mt-4 w-[400px] h-10 disabled:bg-gray-500"
+          >
+            ADD PROJECT
+          </button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }

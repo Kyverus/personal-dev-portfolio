@@ -7,7 +7,7 @@ export default function AdminTechnologyList() {
   console.log(technologies);
   return (
     <>
-      <div className="flex flex-wrap gap-4">
+      <div className="xl:w-[1280px] mx-auto my-5 flex flex-wrap gap-4">
         {technologies &&
           technologies.map((technology) => {
             return (
