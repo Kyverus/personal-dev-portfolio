@@ -14,7 +14,9 @@ export default function AdminProjects() {
           Add Project
         </button>
       </div>
-      <div>Projects</div>
+      <div className="text-3xl font-bold text-center text-dark-green dark:text-light-green">
+        PROJECTS
+      </div>
       <AdminProjectList />
     </div>
   );

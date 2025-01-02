@@ -29,6 +29,7 @@ export default function AddTechnology() {
 
   async function handleAddTechnology(e) {
     e.preventDefault();
+    setLoading(true);
 
     const formData = new FormData();
     formData.append("title", formDetails.title);
@@ -43,6 +44,7 @@ export default function AddTechnology() {
     } else {
       console.log(res.errors);
     }
+    setLoading(false);
   }
   return (
     <div className="xl:w-[1280px] mx-auto rounded-xl p-4">
@@ -52,7 +54,7 @@ export default function AddTechnology() {
       >
         <div className="flex flex-col space-y-3 text-light-primary">
           <label className="text-light-green" htmlFor="title">
-            Title:{" "}
+            Title:
           </label>
           <input
             type="text"
@@ -110,7 +112,7 @@ export default function AddTechnology() {
             type="submit"
             disabled={loading}
             onClick={handleAddTechnology}
-            className="bg-dark-green hover:bg-base-green mt-4 w-[400px] h-10"
+            className="bg-dark-green hover:bg-base-green mt-4 w-[400px] h-10 disabled:bg-gray-500"
           >
             ADD TECHNOLOGY
           </button>

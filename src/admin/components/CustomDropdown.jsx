@@ -2,14 +2,14 @@ import { useState, Children } from "react";
 import { capitalize } from "../../_helpers/capitalize";
 
 export default function CustomDropdown({ value, children }) {
-  const [proficiencyToggle, setProficiencyToggle] = useState(false);
+  const [dropdownToggle, setDrowpdownToggle] = useState(false);
 
   function closeDropdown() {
-    setProficiencyToggle(false);
+    setDrowpdownToggle(false);
   }
 
   function openDropdown() {
-    setProficiencyToggle(true);
+    setDrowpdownToggle(true);
   }
 
   return (
@@ -28,13 +28,13 @@ export default function CustomDropdown({ value, children }) {
         <div className="bg-red-200 relative">
           <div
             className={
-              "absolute right-0 left-0 p-2 bg-base-green" +
-              (proficiencyToggle ? " " : " hidden")
+              "absolute right-0 left-0 p-2 bg-light-green/85" +
+              (dropdownToggle ? " " : " hidden")
             }
           >
             {Children.map(children, (child) => (
               <div
-                className="hover:bg-base-cyan text-dark-primary"
+                className="hover:bg-base-green text-dark-primary font-semibold"
                 onClick={closeDropdown}
               >
                 {child}

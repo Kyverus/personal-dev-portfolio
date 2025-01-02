@@ -14,7 +14,9 @@ export default function AdminTechnologies() {
           Add Technology
         </button>
       </div>
-      <div>Technologies</div>
+      <div className="text-3xl font-bold text-center text-dark-green dark:text-light-green">
+        TECHNOLOGIES
+      </div>
       <AdminTechnologyList />
     </div>
   );
