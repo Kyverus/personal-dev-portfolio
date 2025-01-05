@@ -95,7 +95,7 @@ export default function AddTechnology() {
             className="text-light-green pointer-events-none"
             htmlFor="image"
           >
-            Project Image:
+            Tech Image:
           </label>
           <div>
             <input
