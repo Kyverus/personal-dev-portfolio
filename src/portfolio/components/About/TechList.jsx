@@ -2,7 +2,7 @@ import { TechItem } from "./TechItem";
 
 export function TechList({ technologies, imgClass, labelHidden }) {
   const mainTechnologies = technologies.filter((technology) => {
-    return technology.main;
+    return technology.proficiency != "beginner";
   });
   return (
     <div
@@ -16,9 +16,9 @@ export function TechList({ technologies, imgClass, labelHidden }) {
         {mainTechnologies.map((technology) => {
           return (
             <TechItem
-              key={technology.id}
+              key={technology._id}
               techName={technology.title}
-              techSrc={technology.imgUrl}
+              techSrc={technology.imgURL}
               labelHidden={labelHidden}
             />
           );
