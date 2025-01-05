@@ -10,8 +10,8 @@ export default function ProjectTechList({ technologies, ltr = true }) {
     >
       {technologies.map((tech) => {
         return (
-          <div className="size-8" key={tech.id}>
-            <img src={tech.imgUrl} alt="" />
+          <div className="size-8" key={tech._id}>
+            <img src={tech.imgURL} alt="" />
           </div>
         );
       })}

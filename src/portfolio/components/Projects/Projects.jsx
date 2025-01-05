@@ -1,7 +1,8 @@
-import projects from "../../assets/data/project-contents";
+import { useProjectContext } from "../../../_contexts/ProjectContextProvider";
 import { ProjectsList } from "./ProjectsList";
 
 export function Projects() {
+  const { projects } = useProjectContext();
   return (
     <div
       className="page-section min-h-dvh pt-36 pb-8 space-y-10 text-black dark:text-white"
