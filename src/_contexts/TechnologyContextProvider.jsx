@@ -38,6 +38,27 @@ export function TechnologyContextProvider({ children }) {
     }
   }
 
+  async function fetchTechnology(techId) {
+    try {
+      const response = await axiosPrivate.get(`/api/technologies/${techId}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.status === 200) {
+        console.log("get technology: ", response.data);
+        return { success: true, data: response.data };
+      }
+    } catch (error) {
+      console.log(error.response?.data);
+      if (isAxiosError(error)) {
+        return { success: false, errors: error.response?.data };
+      } else {
+        return { success: false, errors: error };
+      }
+    }
+  }
+
   async function createTechnology(technologyForm) {
     console.log([...technologyForm]);
     try {
@@ -70,11 +91,40 @@ export function TechnologyContextProvider({ children }) {
     }
   }
 
-  async function deleteTechnology(projectId) {
+  async function updateTechnology(technologyForm, techId) {
+    console.log([...technologyForm]);
     try {
-      const response = await axiosPrivate.delete(
-        `/api/technologies/${projectId}`
+      const response = await axiosPrivate.put(
+        `/api/technologies/${techId}`,
+        technologyForm,
+        {
+          headers: {
+            Accept:
+              "application/json, application/xml, text/plain, text/html, *.*",
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
+
+      if (response.status === 200) {
+        console.log("update technology: ", response.data);
+        fetchTechnologies();
+        return { success: true };
+      }
+      throw response;
+    } catch (error) {
+      console.log(error.response?.data);
+      if (isAxiosError(error)) {
+        return { success: false, errors: error.response?.data };
+      } else {
+        return { success: false, errors: error };
+      }
+    }
+  }
+
+  async function deleteTechnology(techId) {
+    try {
+      const response = await axiosPrivate.delete(`/api/technologies/${techId}`);
 
       if (response.status === 200) {
         console.log("delete technology: ", response.data);
@@ -97,7 +147,9 @@ export function TechnologyContextProvider({ children }) {
       value={{
         technologies,
         fetchTechnologies,
+        fetchTechnology,
         createTechnology,
+        updateTechnology,
         deleteTechnology,
       }}
     >

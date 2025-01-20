@@ -38,6 +38,27 @@ export function ProjectContextProvider({ children }) {
     }
   }
 
+  async function fetchProject(projectId) {
+    try {
+      const response = await axiosPrivate.get(`/api/projects/${projectId}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.status === 200) {
+        console.log("get project: ", response.data);
+        return { success: true, data: response.data };
+      }
+    } catch (error) {
+      console.log(error.response?.data);
+      if (isAxiosError(error)) {
+        return { success: false, errors: error.response?.data };
+      } else {
+        return { success: false, errors: error };
+      }
+    }
+  }
+
   async function createProject(projectForm) {
     console.log([...projectForm]);
     try {
@@ -55,6 +76,37 @@ export function ProjectContextProvider({ children }) {
         return { success: true };
       }
 
+      throw response;
+    } catch (error) {
+      console.log(error.response?.data);
+      if (isAxiosError(error)) {
+        return { success: false, errors: error.response?.data };
+      } else {
+        return { success: false, errors: error };
+      }
+    }
+  }
+
+  async function updateProject(projectForm, projectId) {
+    console.log([...projectForm]);
+    try {
+      const response = await axiosPrivate.put(
+        `/api/projects/${projectId}`,
+        projectForm,
+        {
+          headers: {
+            Accept:
+              "application/json, application/xml, text/plain, text/html, *.*",
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        console.log("update project: ", response.data);
+        fetchProjects();
+        return { success: true };
+      }
       throw response;
     } catch (error) {
       console.log(error.response?.data);
@@ -89,7 +141,14 @@ export function ProjectContextProvider({ children }) {
 
   return (
     <ProjectContext.Provider
-      value={{ projects, fetchProjects, createProject, deleteProject }}
+      value={{
+        projects,
+        fetchProjects,
+        fetchProject,
+        createProject,
+        updateProject,
+        deleteProject,
+      }}
     >
       {children}
     </ProjectContext.Provider>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useTechnologyContext } from "../../../_contexts/TechnologyContextProvider";
 import { capitalize } from "../../../_helpers/capitalize";
+import { Link } from "react-router-dom";
 
 export default function AdminTechnologyItem({ technology }) {
   const { deleteTechnology } = useTechnologyContext();
@@ -24,6 +25,12 @@ export default function AdminTechnologyItem({ technology }) {
         <div>{technology.title}</div>
         <div>{technology.category}</div>
         <div>{capitalize(technology.proficiency)}</div>
+        <Link
+          to={`/admin/technologies/update/${technology._id}`}
+          className="bg-blue-500 px-5"
+        >
+          UPDATE
+        </Link>
         <button
           onClick={() => handleTechnologyDelete(technology._id)}
           className="bg-red-500 px-5"

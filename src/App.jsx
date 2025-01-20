@@ -18,6 +18,8 @@ import AdminDashboard from "./admin/components/dashboard/AdminDashboard";
 import AddProject from "./admin/components/projects/AddProject";
 import AdminTechnologies from "./admin/components/technologies/AdminTechnologies";
 import AddTechnology from "./admin/components/technologies/AddTechnology";
+import UpdateTechnology from "./admin/components/technologies/UpdateTechnology";
+import UpdateProject from "./admin/components/projects/UpdateProject";
 
 function App() {
   return (
@@ -40,10 +42,18 @@ function App() {
                         <Route path="projects">
                           <Route index element={<AdminProjects />} />
                           <Route path="add" element={<AddProject />} />
+                          <Route
+                            path="update/:id"
+                            element={<UpdateProject />}
+                          />
                         </Route>
                         <Route path="technologies">
                           <Route index element={<AdminTechnologies />} />
                           <Route path="add" element={<AddTechnology />} />
+                          <Route
+                            path="update/:id"
+                            element={<UpdateTechnology />}
+                          />
                         </Route>
                       </Route>
                     </Route>
