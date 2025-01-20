@@ -1,12 +1,26 @@
-import { useState, Children } from "react";
+import { useState, Children, useEffect } from "react";
 import { capitalize } from "../../../_helpers/capitalize";
 import { useTechnologyContext } from "../../../_contexts/TechnologyContextProvider";
 
-export default function TechnologySelect({ setTechnologies }) {
+export default function TechnologySelect({
+  setTechnologies,
+  initialValue = [],
+}) {
   const [dropdownToggle, setDrowpdownToggle] = useState(false);
   const { technologies } = useTechnologyContext();
 
-  const [techList, setTechList] = useState([]);
+  const [techList, setTechList] = useState(initialValue);
+
+  useEffect(() => {
+    techList.forEach((tech) => {
+      const tempTech = technologies.find(
+        (technology) => technology.title == tech
+      );
+      const techOption = document.getElementById(`tech-${tempTech._id}`);
+      techOption.classList.add("bg-base-cyan");
+      techOption.classList.remove("bg-none");
+    });
+  }, []);
 
   function closeDropdown() {
     setDrowpdownToggle(false);

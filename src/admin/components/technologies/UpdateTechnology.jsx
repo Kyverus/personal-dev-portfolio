@@ -1,51 +1,93 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useTechnologyContext } from "../../../_contexts/TechnologyContextProvider";
 import CustomDropdown from "../CustomDropdown";
+import Loading from "../Loading";
 
-export default function AddTechnology() {
+export default function UpdateTechnology() {
   const navigate = useNavigate();
-  const { createTechnology } = useTechnologyContext();
-  const [formDetails, setFormDetails] = useState({
-    title: "",
-    category: "",
-    proficiency: "beginner",
-    image: null,
-  });
+  const { id } = useParams();
+  const { fetchTechnology, updateTechnology } = useTechnologyContext();
+  const [technology, setTechnology] = useState(null);
+  const [formDetails, setFormDetails] = useState({});
 
   const [loading, setLoading] = useState(false);
+  const [loadScreen, setLoadScreen] = useState(true);
+
+  useEffect(() => {
+    setLoadScreen(true);
+    async function getTech() {
+      const res = await fetchTechnology(id);
+      if (res.success) {
+        setTechnology(res.data);
+      } else {
+        console.log(res.errors);
+        navigate("/admin/technologies");
+      }
+      setLoadScreen(false);
+    }
+
+    getTech();
+  }, []);
 
   function formChange(e) {
     if (e.target.name == "image") {
       setFormDetails({ ...formDetails, image: e.target.files[0] });
     } else {
-      setFormDetails({ ...formDetails, [e.target.name]: e.target.value });
+      if (e.target.value != technology[e.target.name]) {
+        setFormDetails({ ...formDetails, [e.target.name]: e.target.value });
+      } else {
+        const temp = { ...formDetails };
+        delete temp[e.target.name];
+        setFormDetails(temp);
+      }
     }
   }
 
   function selectProficiency(value) {
-    setFormDetails({ ...formDetails, proficiency: value });
+    if (value != technology.proficiency) {
+      setFormDetails({ ...formDetails, proficiency: value });
+    } else {
+      const temp = { ...formDetails };
+      delete temp.proficiency;
+      setFormDetails(temp);
+    }
   }
 
-  async function handleAddTechnology(e) {
+  async function handleUpdateTechnology(e) {
     e.preventDefault();
     setLoading(true);
 
     const formData = new FormData();
-    formData.append("title", formDetails.title);
-    formData.append("category", formDetails.category);
-    formData.append("proficiency", formDetails.proficiency);
-    formData.append("tech-image", formDetails.image);
 
-    const res = await createTechnology(formData);
+    if (formDetails.title) {
+      formData.append("title", formDetails.title);
+    }
+    if (formDetails.category) {
+      formData.append("category", formDetails.category);
+    }
+    if (formDetails.proficiency) {
+      formData.append("proficiency", formDetails.proficiency);
+    }
+    if (formDetails.image != null) {
+      formData.append("tech-image", formDetails.image);
+    }
+
+    const res = await updateTechnology(formData, technology._id);
 
     if (res.success) {
       navigate("/admin/technologies");
     } else {
       console.log(res.errors);
     }
+
     setLoading(false);
   }
+
+  if (loadScreen) {
+    return <Loading />;
+  }
+
   return (
     <div className="xl:w-[1280px] mx-auto rounded-xl p-4">
       <form
@@ -60,18 +102,22 @@ export default function AddTechnology() {
             type="text"
             id="title"
             name="title"
+            value={formDetails.title ? formDetails.title : technology.title}
             onChange={formChange}
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
         </div>
         <div className="flex flex-col space-y-3">
           <label className="text-light-green" htmlFor="category">
-            Category:{" "}
+            Category:
           </label>
           <input
             type="text"
             id="category"
             name="category"
+            value={
+              formDetails.category ? formDetails.category : technology.category
+            }
             onChange={formChange}
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
@@ -80,7 +126,13 @@ export default function AddTechnology() {
           <label className="text-light-green" htmlFor="proficiency">
             Proficiency:
           </label>
-          <CustomDropdown value={formDetails.proficiency}>
+          <CustomDropdown
+            value={
+              formDetails.proficiency
+                ? formDetails.proficiency
+                : technology.proficiency
+            }
+          >
             <div onClick={() => selectProficiency("beginner")}>Beginner</div>
             <div onClick={() => selectProficiency("intermediate")}>
               Intermediate
@@ -90,18 +142,23 @@ export default function AddTechnology() {
             </div>
           </CustomDropdown>
         </div>
-        <div className="flex flex-col space-y-3">
+        <div className="flex flex-col space-y-5">
           <label
             className="text-light-green pointer-events-none"
             htmlFor="image"
           >
             Tech Image:
           </label>
-          {formDetails.image && (
-            <div className="w-[200px]">
-              <img src={URL.createObjectURL(formDetails.image)} alt="" />
-            </div>
-          )}
+          <div className="w-[200px]">
+            <img
+              src={
+                formDetails.image
+                  ? URL.createObjectURL(formDetails.image)
+                  : technology.imgURL
+              }
+              alt=""
+            />
+          </div>
           <div>
             <input
               type="file"
@@ -115,18 +172,11 @@ export default function AddTechnology() {
         <div className="flex justify-center items-center">
           <button
             type="submit"
-            disabled={
-              loading ||
-              !(
-                formDetails.title != "" &&
-                formDetails.category != "" &&
-                formDetails.image != null
-              )
-            }
-            onClick={handleAddTechnology}
+            disabled={loading || Object.keys(formDetails).length == 0}
+            onClick={handleUpdateTechnology}
             className="bg-dark-green hover:bg-base-green mt-4 w-[400px] h-10 disabled:bg-gray-500"
           >
-            ADD TECHNOLOGY
+            SAVE CHANGES
           </button>
         </div>
       </form>

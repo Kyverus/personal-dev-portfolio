@@ -1,5 +1,6 @@
 import React from "react";
 import { useProjectContext } from "../../../_contexts/ProjectContextProvider";
+import { Link } from "react-router-dom";
 
 export default function AdminProjectItem({ project }) {
   const { deleteProject } = useProjectContext();
@@ -29,7 +30,12 @@ export default function AdminProjectItem({ project }) {
         </div>
       </div>
       <div className="flex flex-col space-y-2">
-        <button className="bg-blue-500 px-5">UPDATE</button>
+        <Link
+          to={`/admin/projects/update/${project._id}`}
+          className="bg-blue-500 px-5"
+        >
+          UPDATE
+        </Link>
         <button
           onClick={() => handleProjectDelete(project._id)}
           className="bg-red-500 px-5"
