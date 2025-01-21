@@ -8,7 +8,7 @@ export default function AddTechnology() {
   const { createTechnology } = useTechnologyContext();
   const [formDetails, setFormDetails] = useState({
     title: "",
-    category: "",
+    tags: "",
     proficiency: "beginner",
     image: null,
   });
@@ -33,7 +33,7 @@ export default function AddTechnology() {
 
     const formData = new FormData();
     formData.append("title", formDetails.title);
-    formData.append("category", formDetails.category);
+    formData.append("tags", formDetails.tags);
     formData.append("proficiency", formDetails.proficiency);
     formData.append("tech-image", formDetails.image);
 
@@ -65,13 +65,13 @@ export default function AddTechnology() {
           />
         </div>
         <div className="flex flex-col space-y-3">
-          <label className="text-light-green" htmlFor="category">
-            Category:{" "}
+          <label className="text-light-green" htmlFor="tags">
+            Tags:
           </label>
           <input
             type="text"
-            id="category"
-            name="category"
+            id="tags"
+            name="tags"
             onChange={formChange}
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
@@ -119,7 +119,7 @@ export default function AddTechnology() {
               loading ||
               !(
                 formDetails.title != "" &&
-                formDetails.category != "" &&
+                formDetails.tags != "" &&
                 formDetails.image != null
               )
             }

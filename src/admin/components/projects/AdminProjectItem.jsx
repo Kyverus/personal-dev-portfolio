@@ -24,6 +24,7 @@ export default function AdminProjectItem({ project }) {
         <div className="space-y-4">
           <div>
             <div className="text-light-green font-bold">{project.title}</div>
+            <div>Complexity: {project.complexity}</div>
             <div>{project.description}</div>
             <div>{project.technologies}</div>
           </div>

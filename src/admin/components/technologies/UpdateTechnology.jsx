@@ -63,8 +63,8 @@ export default function UpdateTechnology() {
     if (formDetails.title) {
       formData.append("title", formDetails.title);
     }
-    if (formDetails.category) {
-      formData.append("category", formDetails.category);
+    if (formDetails.tags) {
+      formData.append("tags", formDetails.tags);
     }
     if (formDetails.proficiency) {
       formData.append("proficiency", formDetails.proficiency);
@@ -108,16 +108,14 @@ export default function UpdateTechnology() {
           />
         </div>
         <div className="flex flex-col space-y-3">
-          <label className="text-light-green" htmlFor="category">
-            Category:
+          <label className="text-light-green" htmlFor="tags">
+            Tags:
           </label>
           <input
             type="text"
-            id="category"
-            name="category"
-            value={
-              formDetails.category ? formDetails.category : technology.category
-            }
+            id="tags"
+            name="tags"
+            value={formDetails.tags ? formDetails.tags : technology.tags}
             onChange={formChange}
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />

@@ -2,7 +2,8 @@ import { TechItem } from "./TechItem";
 
 export function TechList({ technologies, imgClass, labelHidden }) {
   const mainTechnologies = technologies.filter((technology) => {
-    return technology.proficiency != "beginner";
+    const tags = technology.tags;
+    return tags.includes("main");
   });
   return (
     <div
