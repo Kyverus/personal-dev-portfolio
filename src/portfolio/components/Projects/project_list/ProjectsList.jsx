@@ -1,4 +1,4 @@
-import { ProjectItem } from "./ProjectItem";
+import { ProjectListItem } from "./ProjectListItem";
 import { useEffect } from "react";
 
 export function ProjectsList({ projects, className }) {
@@ -44,7 +44,7 @@ export function ProjectsList({ projects, className }) {
     >
       {projects.map((project, i) => {
         return (
-          <ProjectItem
+          <ProjectListItem
             project={project}
             key={i}
             index={i}

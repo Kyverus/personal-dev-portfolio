@@ -12,8 +12,17 @@ export default {
           "0%, 100%": { transform: "translateY(-10px)" },
           "50%": { transform: "translateY(10px)" },
         },
+        appear: {
+          "0%": {
+            opacity: "0",
+          },
+          "100%": {
+            opacity: "1",
+          },
+        },
       },
       animation: {
+        appear: "appear 0.5s ease-in-out",
         updown: "updown 3s linear infinite",
       },
       transitionProperty: {

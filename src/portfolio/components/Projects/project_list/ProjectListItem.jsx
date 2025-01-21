@@ -1,10 +1,10 @@
 import ProjectTechList from "./ProjectTechList";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import { FiLink } from "react-icons/fi";
-import { useDarkContext } from "../../../_contexts/DarkContextProvider";
-import { useTechnologyContext } from "../../../_contexts/TechnologyContextProvider";
+import { useDarkContext } from "../../../../_contexts/DarkContextProvider";
+import { useTechnologyContext } from "../../../../_contexts/TechnologyContextProvider";
 
-export function ProjectItem({ project, className, index }) {
+export function ProjectListItem({ project, className, index }) {
   const { dark } = useDarkContext();
   const { technologies } = useTechnologyContext();
 
@@ -23,7 +23,7 @@ export function ProjectItem({ project, className, index }) {
           : "  project-right translate-x-8 self-end flex-row-reverse")
       }
     >
-      <div className="lg:w-1/2 lg:shadow-light-tertiary lg:dark:shadow-dark-tertiary lg:shadow-[0_0_5px_1px_rgb(0,0,0,0.3)]">
+      <div className="lg:w-1/2 lg:shadow-light-tertiary lg:dark:shadow-base-green lg:shadow-[0_0_5px_1px_rgb(0,0,0,0.3)]">
         <img src={project.imgURL} alt="" />
       </div>
 
