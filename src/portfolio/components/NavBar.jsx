@@ -51,7 +51,7 @@ export function NavBar() {
         className={
           "transition-[all,_height] duration-700 origin-center w-full" +
           (scrolled
-            ? " bg-light-secondary dark:bg-dark-secondary shadow-[0_0_2px_1px_rgb(0,0,0,0.3)] md:shadow-none md:bg-light-secondary/80 md:dark:bg-dark-secondary/80 py-0 text-dark-green dark:text-light-green"
+            ? " bg-white dark:bg-dark-secondary shadow-[0_0_2px_1px_rgb(0,0,0,0.3)] md:shadow-none md:bg-white/80 md:dark:bg-dark-secondary/80 py-0 text-dark-green dark:text-light-green"
             : " mt-5 py-2 rounded-xl bg-light-green dark:bg-dark-green")
         }
       >
