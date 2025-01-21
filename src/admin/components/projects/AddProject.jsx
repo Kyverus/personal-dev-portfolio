@@ -10,6 +10,7 @@ export default function AddProject() {
     title: "",
     type: "",
     description: "",
+    complexity: 1,
     technologies: "",
     siteURL: "",
     image: null,
@@ -37,6 +38,7 @@ export default function AddProject() {
     formData.append("title", formDetails.title);
     formData.append("type", formDetails.type);
     formData.append("description", formDetails.description);
+    formData.append("complexity", formDetails.complexity);
     formData.append("technologies", formDetails.technologies);
     formData.append("siteURL", formDetails.siteURL);
     formData.append("project-image", formDetails.image);
@@ -94,6 +96,20 @@ export default function AddProject() {
           />
         </div>
         <div className="flex flex-col space-y-3">
+          <label className="text-light-green" htmlFor="complexity">
+            Complexity:
+          </label>
+          <input
+            type="number"
+            min="1"
+            max="10"
+            id="complexity"
+            name="complexity"
+            onChange={formChange}
+            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
+          />
+        </div>
+        <div className="flex flex-col space-y-3">
           <label className="text-light-green" htmlFor="technologies">
             Technologies:
           </label>
@@ -140,6 +156,7 @@ export default function AddProject() {
                 formDetails.title != "" &&
                 formDetails.type != "" &&
                 formDetails.description != "" &&
+                formDetails.complexity != "" &&
                 formDetails.technologies != "" &&
                 formDetails.siteURL != "" &&
                 formDetails.image != null

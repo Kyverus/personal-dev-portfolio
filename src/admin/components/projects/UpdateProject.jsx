@@ -63,12 +63,14 @@ export default function UpdateProject() {
     if (formDetails.title) {
       formData.append("title", formDetails.title);
     }
-
     if (formDetails.type) {
       formData.append("type", formDetails.type);
     }
     if (formDetails.description) {
       formData.append("description", formDetails.description);
+    }
+    if (formDetails.complexity) {
+      formData.append("complexity", formDetails.complexity);
     }
     if (formDetails.technologies) {
       formData.append("technologies", formDetails.technologies);
@@ -139,6 +141,25 @@ export default function UpdateProject() {
               formDetails.description
                 ? formDetails.description
                 : project.description
+            }
+            onChange={formChange}
+            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
+          />
+        </div>
+        <div className="flex flex-col space-y-3">
+          <label className="text-light-green" htmlFor="complexity">
+            Complexity:
+          </label>
+          <input
+            type="number"
+            min="1"
+            max="10"
+            id="complexity"
+            name="complexity"
+            value={
+              formDetails.complexity
+                ? formDetails.complexity
+                : project.complexity
             }
             onChange={formChange}
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"

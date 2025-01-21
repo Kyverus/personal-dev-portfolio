@@ -23,7 +23,7 @@ export default function AdminTechnologyItem({ technology }) {
       </div>
       <div>
         <div>{technology.title}</div>
-        <div>{technology.category}</div>
+        <div>{technology.tags}</div>
         <div>{capitalize(technology.proficiency)}</div>
         <Link
           to={`/admin/technologies/update/${technology._id}`}

@@ -8,9 +8,13 @@ export function Projects() {
   const { projects } = useProjectContext();
   const [projectView, setProjectView] = useState("list");
   const [search, setSearch] = useState("");
+
+  const sortedProjects = projects.sort(function (a, b) {
+    return b.complexity - a.complexity;
+  });
   const searchedProjects =
     search != ""
-      ? projects.filter((project) => filterFunc(project, search))
+      ? sortedProjects.filter((project) => filterFunc(project, search))
       : projects;
 
   function filterFunc(project, searchInput) {
