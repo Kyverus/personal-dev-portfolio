@@ -12,11 +12,11 @@ export default function PortfolioPage() {
   const { dark } = useDarkContext();
   return (
     <div
-      style={{
-        backgroundImage: `url('${dark ? bgPatternDark : bgPatternLight}')`,
-        backgroundRepeat: "repeat",
-        backgroundAttachment: "fixed",
-      }}
+    // style={{
+    //   backgroundImage: `url('${dark ? bgPatternDark : bgPatternLight}')`,
+    //   backgroundRepeat: "repeat",
+    //   backgroundAttachment: "fixed",
+    // }}
     >
       <NavBar />
       <About />
