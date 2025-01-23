@@ -13,7 +13,7 @@ export default function PortfolioPage() {
   return (
     <div
       style={{
-        backgroundImage: `url(${dark ? bgPatternDark : bgPatternLight})`,
+        backgroundImage: `url('${dark ? bgPatternDark : bgPatternLight}')`,
         backgroundRepeat: "repeat",
         backgroundAttachment: "fixed",
       }}
