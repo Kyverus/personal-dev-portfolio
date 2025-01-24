@@ -14,15 +14,17 @@ export default function ProjectSearchBar({ setSearch }) {
   return (
     <div className="flex grow space-x-2">
       <div className="flex items-center justify-center">
-        <IoMdSearch className="size-8 text-dark-green dark:text-light-green" />
+        <IoMdSearch className="size-7 xs:size-8 text-dark-green dark:text-light-green" />
       </div>
-      <input
-        className="grow dark:bg-dark-tertiary dark:text-light-secondary px-2 outline-none rounded-xl"
-        name="search"
-        id="search"
-        type="text"
-        onChange={(e) => handleSearch(e.target.value)}
-      />
+      <div className="grow flex items-center justify-center">
+        <input
+          className="w-full dark:bg-dark-tertiary dark:text-light-secondary px-2 outline-none rounded-xl"
+          name="search"
+          id="search"
+          type="text"
+          onChange={(e) => handleSearch(e.target.value)}
+        />
+      </div>
     </div>
   );
 }

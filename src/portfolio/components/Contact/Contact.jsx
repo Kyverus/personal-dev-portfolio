@@ -38,7 +38,7 @@ export function Contact() {
         <Alert />
       </div>
 
-      <div className="text-3xl pt-12 font-bold text-center px-2 text-dark-green dark:text-light-green">
+      <div className="text-2xl xs:text-3xl pt-12 font-bold text-center px-2 text-dark-green dark:text-light-green">
         CONTACT
       </div>
 

@@ -56,10 +56,14 @@ export function NavBar() {
         }
       >
         <div className="mx-auto max-w-7xl px-2 md:px-6 lg:px-8">
-          <div className="relative flex h-24 items-center justify-between">
+          <div className="relative flex h-20 items-center justify-between">
             <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
               {/* Mobile menu button*/}
-              <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-300 hover:text-black dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+              <DisclosureButton
+                className={
+                  "group relative inline-flex items-center justify-center rounded-md p-2 focus:outline-none hover:text-base-green focus:text-base-cyan"
+                }
+              >
                 <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open main menu</span>
                 <Bars3Icon
@@ -112,20 +116,20 @@ export function NavBar() {
                 href="https://www.linkedin.com/in/kirlianpacibe12"
                 target="_blank"
               >
-                <FaLinkedin className="size-9 hover:text-base-green active:text-base-cyan" />
+                <FaLinkedin className="size-8 xs:size-9 hover:text-base-green active:text-base-cyan" />
               </a>
               <a
                 className="mx-2"
                 href="https://github.com/kyverus"
                 target="_blank"
               >
-                <FaGithub className="size-9 hover:text-base-green active:text-base-cyan" />
+                <FaGithub className="size-8 xs:size-9 hover:text-base-green active:text-base-cyan" />
               </a>
               <button className="mx-2" onClick={() => darkModeHandler()}>
                 {dark ? (
-                  <SunIcon className="size-9 hover:text-base-green active:text-base-cyan" />
+                  <SunIcon className="size-8 xs:size-9 hover:text-base-green active:text-base-cyan" />
                 ) : (
-                  <MoonIcon className="size-9 hover:text-base-green active:text-base-cyan" />
+                  <MoonIcon className="size-8 xs:size-9 hover:text-base-green active:text-base-cyan" />
                 )}
               </button>
             </div>

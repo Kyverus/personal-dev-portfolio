@@ -9,12 +9,12 @@ export function Resume() {
       className="page-section pt-36 pb-8 text-dark-primary dark:text-light-primary"
       id="resume"
     >
-      <div className="text-3xl font-bold text-center px-2 py-8 text-dark-green dark:text-light-green">
+      <div className="text-2xl xs:text-3xl font-bold text-center px-2 py-8 text-dark-green dark:text-light-green">
         DOWNLOAD RESUME
       </div>
 
       <div className="xl:w-[1280px] mx-auto rounded-xl p-4 space-y-10">
-        <div className="indent-10 px-10">
+        <div className="indent-10 px-10 text-sm xs:text-base">
           A Web Developer seeking an entry-level position in a company whose
           values and goals align with my own values and skill set. I wish to be
           a part of a growing organization to achieve the goals of the company
@@ -22,10 +22,10 @@ export function Resume() {
         </div>
 
         <div className="lg:flex justify-center items-center gap-4">
-          <div className="font-bold text-lg text-center lg:text-left my-4">
+          <div className="font-bold text-md xs:text-lg text-center lg:text-left my-4">
             PACIBE-KIRLIAN-RESUME.PDF
           </div>
-          <div className="xs:flex justify-center items-center gap-4">
+          <div className="xs:flex justify-center items-center gap-4 text-sm xs:text-base">
             <a
               href={resumeFile}
               target="_blank"
