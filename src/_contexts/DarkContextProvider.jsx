@@ -16,6 +16,7 @@ export function useDarkContext() {
 export function DarkContextProvider({ children }) {
   const [dark, setDark] = useState(false);
   const [bgPattern, setBgPattern] = useState("");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -24,13 +25,16 @@ export function DarkContextProvider({ children }) {
     } else {
       setBgPattern(bgPatternLight);
     }
+    setMounted(true);
   }, []);
 
   useEffect(() => {
-    if (dark) {
-      setBgPattern(bgPatternDark);
-    } else {
-      setBgPattern(bgPatternLight);
+    if (mounted) {
+      if (dark) {
+        setBgPattern(bgPatternDark);
+      } else {
+        setBgPattern(bgPatternLight);
+      }
     }
   }, [dark]);
 
