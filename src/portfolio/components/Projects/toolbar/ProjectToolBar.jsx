@@ -8,24 +8,37 @@ export default function ProjectToolBar({ setView, view, setSearch }) {
       <div className="container mx-auto xl:w-[800px] px-4 py-3 flex space-x-2 rounded-3xl bg-light-green dark:bg-dark-secondary">
         <ProjectSearchBar setSearch={setSearch} />
         <div className="flex space-x-1 items-center justify-center">
-          <MdListAlt
+          <div
             className={
-              "size-7" +
-              (view == "list"
-                ? " text-base-cyan size-8"
-                : " dark:text-light-green")
+              view == "grid" ? "  inline-block" : " hidden xs:inline-block"
             }
-            onClick={() => setView("list")}
-          />
-          <MdGridView
+          >
+            <MdListAlt
+              className={
+                "size-7" +
+                (view == "list"
+                  ? " text-base-cyan size-8"
+                  : " dark:text-light-green")
+              }
+              onClick={() => setView("list")}
+            />
+          </div>
+
+          <div
             className={
-              "size-7" +
-              (view == "grid"
-                ? " text-base-cyan size-8"
-                : " dark:text-light-green")
+              view == "list" ? "  inline-block" : " hidden xs:inline-block"
             }
-            onClick={() => setView("grid")}
-          />
+          >
+            <MdGridView
+              className={
+                "size-7" +
+                (view == "grid"
+                  ? " text-base-cyan size-8"
+                  : " dark:text-light-green")
+              }
+              onClick={() => setView("grid")}
+            />
+          </div>
         </div>
       </div>
     </div>

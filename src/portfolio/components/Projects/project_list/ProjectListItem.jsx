@@ -33,11 +33,13 @@ export function ProjectListItem({ project, className, index }) {
           (index % 2 == 0 ? " lg:-translate-x-8" : " lg:translate-x-8")
         }
       >
-        <div className="text-center text-3xl font-bold mb-2 text-dark-green dark:text-light-green">
+        <div className="text-center text-2xl xs:text-3xl font-bold mb-2 text-dark-green dark:text-light-green">
           {project.title}
         </div>
         <div className="py-2">
-          <div className="min-h-20">{project.description}</div>
+          <div className="min-h-20 text-sm xs:text-base">
+            {project.description}
+          </div>
           <div
             className={
               "xs:flex justify-between items-start gap-3" +
