@@ -21,7 +21,6 @@ export function DarkContextProvider({ children }) {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       setDark(true);
       document.body.classList.add("dark");
-      setBgPattern(bgPatternDark);
     } else {
       setBgPattern(bgPatternLight);
     }
