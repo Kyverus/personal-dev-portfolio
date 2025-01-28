@@ -8,7 +8,7 @@ export default function AddProject() {
   const { createProject } = useProjectContext();
   const [formDetails, setFormDetails] = useState({
     title: "",
-    type: "",
+    tags: "",
     description: "",
     complexity: 1,
     technologies: "",
@@ -36,7 +36,7 @@ export default function AddProject() {
 
     const formData = new FormData();
     formData.append("title", formDetails.title);
-    formData.append("type", formDetails.type);
+    formData.append("tags", formDetails.type);
     formData.append("description", formDetails.description);
     formData.append("complexity", formDetails.complexity);
     formData.append("technologies", formDetails.technologies);
@@ -72,13 +72,13 @@ export default function AddProject() {
           />
         </div>
         <div className="flex flex-col space-y-3">
-          <label className="text-light-green" htmlFor="type">
-            Type:
+          <label className="text-light-green" htmlFor="tags">
+            Tags:
           </label>
           <input
             type="text"
-            id="type"
-            name="type"
+            id="tags"
+            name="tags"
             onChange={formChange}
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
@@ -154,7 +154,7 @@ export default function AddProject() {
               loading ||
               !(
                 formDetails.title != "" &&
-                formDetails.type != "" &&
+                formDetails.tags != "" &&
                 formDetails.description != "" &&
                 formDetails.complexity != "" &&
                 formDetails.technologies != "" &&

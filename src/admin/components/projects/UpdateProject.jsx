@@ -63,8 +63,8 @@ export default function UpdateProject() {
     if (formDetails.title) {
       formData.append("title", formDetails.title);
     }
-    if (formDetails.type) {
-      formData.append("type", formDetails.type);
+    if (formDetails.tags) {
+      formData.append("tags", formDetails.tags);
     }
     if (formDetails.description) {
       formData.append("description", formDetails.description);
@@ -117,14 +117,14 @@ export default function UpdateProject() {
           />
         </div>
         <div className="flex flex-col space-y-3">
-          <label className="text-light-green" htmlFor="type">
-            Type:
+          <label className="text-light-green" htmlFor="tags">
+            Tags:
           </label>
           <input
             type="text"
-            id="type"
-            name="type"
-            value={formDetails.type ? formDetails.type : project.type}
+            id="tags"
+            name="tags"
+            value={formDetails.tags ? formDetails.tags : project.tags}
             onChange={formChange}
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
