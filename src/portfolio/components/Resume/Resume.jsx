@@ -15,10 +15,10 @@ export function Resume() {
 
       <div className="xl:w-[1280px] mx-auto rounded-xl p-4 space-y-10">
         <div className="indent-10 px-10 text-sm xs:text-base">
-          A Web Developer seeking an entry-level position in a company whose
-          values and goals align with my own values and skill set. I wish to be
-          a part of a growing organization to achieve the goals of the company
-          while expanding my skills and knowledge.
+          A Software Developer seeking an entry-level position in a company
+          whose values and goals align with my own values and skill set. I wish
+          to be a part of a growing organization to achieve the goals of the
+          company while expanding my skills and knowledge.
         </div>
 
         <div className="lg:flex justify-center items-center gap-4">
