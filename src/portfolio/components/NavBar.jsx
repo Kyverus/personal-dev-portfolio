@@ -17,6 +17,7 @@ import { FaLinkedin } from "react-icons/fa";
 import profilePic from "../assets/images/profile-picture.jpg";
 import { useScrollContext } from "../../_contexts/ScrollContextProvider";
 import { useDarkContext } from "../../_contexts/DarkContextProvider";
+import PortfolioLogo from "./PortfolioLogo";
 
 export function NavBar() {
   const { dark, darkModeHandler } = useDarkContext();
@@ -77,10 +78,20 @@ export function NavBar() {
               </DisclosureButton>
             </div>
             <div className="w-40 hidden md:flex justify-center">
-              <img
-                src={profilePic}
-                className="size-14 md:size-16 rounded-full"
-              />
+              <a href="#about">
+                <PortfolioLogo
+                  className={
+                    "size-10 transition-colors duration-500" +
+                    (scrolled
+                      ? dark
+                        ? " fill-light-green"
+                        : " fill-dark-green"
+                      : dark
+                      ? " fill-light-primary"
+                      : " fill-dark-primary")
+                  }
+                />
+              </a>
             </div>
             <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
               <div className="hidden md:mx-auto md:flex items-center">
