@@ -31,7 +31,7 @@ export function Banner() {
         </div>
         <div className="lg:w-1/3 flex justify-center">
           <img
-            className="animate-updown size-[350px] object-scale-down rounded-3xl"
+            className="size-[300px] object-scale-down rounded-full dark:brightness-[0.9]"
             src={headerImg}
           />
         </div>
