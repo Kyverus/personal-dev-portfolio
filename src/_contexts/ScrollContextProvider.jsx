@@ -18,7 +18,6 @@ export function ScrollContextProvider({ children }) {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            console.log(entry.target.id);
             setActiveSection(entry.target.id);
             window.history.replaceState(null, "", `/#${entry.target.id}`);
           }

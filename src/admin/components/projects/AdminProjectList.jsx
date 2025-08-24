@@ -4,7 +4,6 @@ import AdminProjectItem from "./AdminProjectItem";
 
 export default function AdminProjectList() {
   const { projects } = useProjectContext();
-  console.log(projects);
   const sortedProjects = projects.sort(function (a, b) {
     return b.complexity - a.complexity;
   });

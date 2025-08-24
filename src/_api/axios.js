@@ -33,7 +33,6 @@ function addInstanceInterceptors(axiosInstance) {
               "Authorization"
             ] = `Bearer ${refRes.data.accessToken}`;
 
-            console.log(refRes);
             console.log("token refreshed");
 
             return axios(error.config);
