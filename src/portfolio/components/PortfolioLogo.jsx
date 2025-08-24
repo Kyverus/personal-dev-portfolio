@@ -4,7 +4,7 @@ export default function PortfolioLogo({ className }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      xml:space="preserve"
+      xmlSpace="preserve"
       viewBox="0 0 500 500"
       className={className}
     >

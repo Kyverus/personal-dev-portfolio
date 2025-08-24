@@ -30,7 +30,6 @@ export function ProjectContextProvider({ children }) {
         },
       });
       if (response.status === 200) {
-        console.log("get projects: ", response.data);
         setProjects(response.data);
       }
     } catch (error) {
@@ -46,7 +45,6 @@ export function ProjectContextProvider({ children }) {
         },
       });
       if (response.status === 200) {
-        console.log("get project: ", response.data);
         return { success: true, data: response.data };
       }
     } catch (error) {
@@ -60,7 +58,6 @@ export function ProjectContextProvider({ children }) {
   }
 
   async function createProject(projectForm) {
-    console.log([...projectForm]);
     try {
       const response = await axiosPrivate.post("/api/projects", projectForm, {
         headers: {
@@ -71,7 +68,6 @@ export function ProjectContextProvider({ children }) {
       });
 
       if (response.status === 200) {
-        console.log("create project: ", response.data);
         fetchProjects();
         return { success: true };
       }
@@ -103,7 +99,6 @@ export function ProjectContextProvider({ children }) {
       );
 
       if (response.status === 200) {
-        console.log("update project: ", response.data);
         fetchProjects();
         return { success: true };
       }
@@ -123,7 +118,6 @@ export function ProjectContextProvider({ children }) {
       const response = await axiosPrivate.delete(`/api/projects/${projectId}`);
 
       if (response.status === 200) {
-        console.log("delete project: ", response.data);
         fetchProjects();
         return { success: true };
       }

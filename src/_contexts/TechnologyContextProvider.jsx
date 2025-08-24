@@ -30,7 +30,6 @@ export function TechnologyContextProvider({ children }) {
         },
       });
       if (response.status === 200) {
-        console.log("get technologies: ", response.data);
         setTechnologies(response.data);
       }
     } catch (error) {
@@ -46,7 +45,6 @@ export function TechnologyContextProvider({ children }) {
         },
       });
       if (response.status === 200) {
-        console.log("get technology: ", response.data);
         return { success: true, data: response.data };
       }
     } catch (error) {
@@ -60,7 +58,6 @@ export function TechnologyContextProvider({ children }) {
   }
 
   async function createTechnology(technologyForm) {
-    console.log([...technologyForm]);
     try {
       const response = await axiosPrivate.post(
         "/api/technologies",
@@ -75,7 +72,6 @@ export function TechnologyContextProvider({ children }) {
       );
 
       if (response.status === 200) {
-        console.log("create technology: ", response.data);
         fetchTechnologies();
         return { success: true };
       }
@@ -92,7 +88,6 @@ export function TechnologyContextProvider({ children }) {
   }
 
   async function updateTechnology(technologyForm, techId) {
-    console.log([...technologyForm]);
     try {
       const response = await axiosPrivate.put(
         `/api/technologies/${techId}`,
@@ -107,7 +102,6 @@ export function TechnologyContextProvider({ children }) {
       );
 
       if (response.status === 200) {
-        console.log("update technology: ", response.data);
         fetchTechnologies();
         return { success: true };
       }
@@ -127,7 +121,6 @@ export function TechnologyContextProvider({ children }) {
       const response = await axiosPrivate.delete(`/api/technologies/${techId}`);
 
       if (response.status === 200) {
-        console.log("delete technology: ", response.data);
         fetchTechnologies();
         return { success: true };
       }

@@ -62,8 +62,6 @@ export function AuthContextProvider({ children }) {
           withCredentials: true,
         }
       );
-
-      console.log(response.data);
       axiosPrivate.defaults.headers.common[
         "Authorization"
       ] = `BEARER ${response.data.accessToken}`;

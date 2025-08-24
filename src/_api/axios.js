@@ -1,5 +1,6 @@
 import axios from "axios";
 const BASE_URL = "https://api-kirlian-dev-portfolio.vercel.app";
+// const BASE_URL = "http://localhost:3000";
 
 export default axios.create({
   baseURL: BASE_URL,
@@ -33,7 +34,6 @@ function addInstanceInterceptors(axiosInstance) {
               "Authorization"
             ] = `Bearer ${refRes.data.accessToken}`;
 
-            console.log(refRes);
             console.log("token refreshed");
 
             return axios(error.config);

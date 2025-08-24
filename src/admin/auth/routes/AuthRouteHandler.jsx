@@ -10,12 +10,9 @@ const AuthRouteHandler = () => {
 
   if (!authResolved) {
     console.log("Resolving Auth");
-    console.log(auth);
-    console.log(authResolved);
     return <Loading />;
   } else {
     if (auth) {
-      console.log(pathname);
       if (pathname == "/login") {
         return <Navigate to="/admin" />;
       }

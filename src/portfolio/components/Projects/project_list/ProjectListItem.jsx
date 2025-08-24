@@ -37,7 +37,7 @@ export function ProjectListItem({ project, className, index }) {
           {project.title}
         </div>
         <div className="py-2">
-          <div className="min-h-20 text-sm xs:text-base">
+          <div className="min-h-20 text-sm xs:text-base text-dark-secondary dark:text-light-secondary">
             {project.description}
           </div>
           <div
