@@ -10,7 +10,7 @@ export function Banner() {
             <div className="mt-10 text-4xl xs:text-5xl font-bold text-center xs:text-left text-dark-green dark:text-light-green">
               Software Developer
             </div>
-            <div className="text-sm xs:text-base text-justify indent-12 tracking-wider">
+            <div className="text-sm xs:text-base text-dark-secondary dark:text-light-secondary text-justify indent-12 tracking-wider">
               Hello, I'm Kirlian Pacibe, I have fundamental knowledge in
               building simple and functional websites and applications. I have
               made personal projects regarding web and desktop applications

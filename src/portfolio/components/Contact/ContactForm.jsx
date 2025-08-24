@@ -50,7 +50,7 @@ export function ContactForm({ className }) {
       }
     >
       <form
-        className="w-full text-lg xs:text-xl flex flex-col space-y-10"
+        className="w-full text-lg xs:text-xl flex flex-col space-y-8"
         onSubmit={sendEmail}
       >
         <div className="flex flex-col space-y-3">
