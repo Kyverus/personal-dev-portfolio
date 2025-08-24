@@ -24,6 +24,29 @@ export function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const { activeSection } = useScrollContext();
 
+  const navigationMenus = [
+    {
+      menuname: "about",
+      menutitle: "About",
+      path: "#about",
+    },
+    {
+      menuname: "projects",
+      menutitle: "Projects",
+      path: "#projects",
+    },
+    {
+      menuname: "experience",
+      menutitle: "Experience",
+      path: "#experience",
+    },
+    {
+      menuname: "contact",
+      menutitle: "Contact",
+      path: "#contact",
+    },
+  ];
+
   useEffect(() => {
     const onScroll = () => {
       if (window.scrollY > 50) {
@@ -96,28 +119,18 @@ export function NavBar() {
             <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
               <div className="hidden md:mx-auto md:flex items-center">
                 <div className="flex space-x-4">
-                  <CustomLink
-                    path={"#about"}
-                    className={activeSection == "about" ? "text-base-cyan" : ""}
-                  >
-                    About
-                  </CustomLink>
-                  <CustomLink
-                    path={"#projects"}
-                    className={
-                      activeSection == "projects" ? "text-base-cyan" : ""
-                    }
-                  >
-                    Projects
-                  </CustomLink>
-                  <CustomLink
-                    path={"#contact"}
-                    className={
-                      activeSection == "contact" ? "text-base-cyan" : ""
-                    }
-                  >
-                    Contact
-                  </CustomLink>
+                  {navigationMenus.map((menu) => {
+                    return (
+                      <CustomLink
+                        path={menu.path}
+                        className={
+                          activeSection == menu.menuname ? "text-base-cyan" : ""
+                        }
+                      >
+                        {menu.menutitle}
+                      </CustomLink>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -149,27 +162,19 @@ export function NavBar() {
 
         <DisclosurePanel className="md:hidden">
           <div className="space-y-1 px-2 pb-3 pt-2">
-            <CloseButton
-              as={CustomLink}
-              path={"#about"}
-              className={activeSection == "about" ? "text-base-cyan" : ""}
-            >
-              About
-            </CloseButton>
-            <CloseButton
-              as={CustomLink}
-              path={"#projects"}
-              className={activeSection == "projects" ? "text-base-cyan" : ""}
-            >
-              Projects
-            </CloseButton>
-            <CloseButton
-              as={CustomLink}
-              path={"#contact"}
-              className={activeSection == "contact" ? "text-base-cyan" : ""}
-            >
-              Contact
-            </CloseButton>
+            {navigationMenus.map((menu) => {
+              return (
+                <CloseButton
+                  as={CustomLink}
+                  path={menu.path}
+                  className={
+                    activeSection == menu.menuname ? "text-base-cyan" : ""
+                  }
+                >
+                  {menu.menutitle}
+                </CloseButton>
+              );
+            })}
           </div>
         </DisclosurePanel>
       </Disclosure>

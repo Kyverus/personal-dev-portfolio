@@ -19,8 +19,8 @@ export default function PortfolioPage() {
     >
       <NavBar />
       <About />
-      <Resume />
       <Projects />
+      <Resume />
       <Contact />
       <Footer />
     </div>

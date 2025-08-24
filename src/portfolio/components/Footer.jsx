@@ -30,8 +30,12 @@ export function Footer() {
     >
       <div className="text-sm md:flex-1 md:flex md:space-x-5">
         <div className="font-bold">LINKS:</div>
-        <div>Github</div>
-        <div>LinkedIn</div>
+        <a href="https://github.com/kyverus" target="_blank">
+          <div className="hover:text-base-cyan">Github</div>
+        </a>
+        <a href="https://www.linkedin.com/in/kirlianpacibe12" target="_blank">
+          <div className="hover:text-base-cyan">LinkedIn</div>
+        </a>
       </div>
       <div className="text-sm md:flex-1 md:flex md:space-x-5">
         <div className="font-bold">EMAIL:</div>
