@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useProjectContext } from "../../../_contexts/ProjectContextProvider";
-import TechnologySelect from "./TechnologySelect";
+import TechnologySelect from "../TechnologySelect";
 import Loading from "../Loading";
 
 export default function UpdateProject() {

@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import { useProjectContext } from "../../../_contexts/ProjectContextProvider";
+import { useExperienceContext } from "../../../_contexts/ExperienceContextProvider";
+import { FaCalendarAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import TechnologySelect from "../TechnologySelect";
 
-export default function AddProject() {
+export default function AddExperience() {
   const navigate = useNavigate();
-  const { createProject } = useProjectContext();
+  const { createExperience } = useExperienceContext();
   const [formDetails, setFormDetails] = useState({
-    title: "",
-    tags: "",
+    jobTitle: "",
+    companyName: "",
     description: "",
-    complexity: 1,
     technologies: "",
-    siteURL: "",
-    image: null,
+    startDate: null,
+    endDate: null,
   });
 
   const [loading, setLoading] = useState(false);
@@ -30,20 +30,21 @@ export default function AddProject() {
     setFormDetails({ ...formDetails, technologies: value });
   }
 
-  async function handleAddProject(e) {
+  async function handleAddExperience(e) {
     e.preventDefault();
     setLoading(true);
 
-    const formData = new FormData();
-    formData.append("title", formDetails.title);
-    formData.append("tags", formDetails.type);
-    formData.append("description", formDetails.description);
-    formData.append("complexity", formDetails.complexity);
-    formData.append("technologies", formDetails.technologies);
-    formData.append("siteURL", formDetails.siteURL);
-    formData.append("project-image", formDetails.image);
+    console.log({ ...formDetails });
 
-    const res = await createProject(formData);
+    const formData = new FormData();
+    formData.append("jobTitle", formDetails.jobTitle);
+    formData.append("companyName", formDetails.companyName);
+    formData.append("description", formDetails.description);
+    formData.append("technologies", formDetails.technologies);
+    formData.append("startDate", formDetails.startDate);
+    formData.append("endDate", formDetails.endDate);
+
+    const res = await createExperience(formData);
 
     if (res.success) {
       navigate("/admin/projects");
@@ -60,25 +61,25 @@ export default function AddProject() {
         className="w-full text-xl flex flex-col space-y-10"
       >
         <div className="flex flex-col space-y-3">
-          <label className="text-light-green" htmlFor="title">
-            Title:
+          <label className="text-light-green" htmlFor="jobTitle">
+            Job Title:
           </label>
           <input
             type="text"
-            id="title"
-            name="title"
+            id="jobTitle"
+            name="jobTitle"
             onChange={formChange}
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
         </div>
         <div className="flex flex-col space-y-3">
-          <label className="text-light-green" htmlFor="tags">
-            Tags:
+          <label className="text-light-green" htmlFor="companyName">
+            Company Name:
           </label>
           <input
             type="text"
-            id="tags"
-            name="tags"
+            id="companyName"
+            name="companyName"
             onChange={formChange}
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
@@ -96,55 +97,41 @@ export default function AddProject() {
           />
         </div>
         <div className="flex flex-col space-y-3">
-          <label className="text-light-green" htmlFor="complexity">
-            Complexity:
-          </label>
-          <input
-            type="number"
-            min="1"
-            max="10"
-            id="complexity"
-            name="complexity"
-            onChange={formChange}
-            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
-          />
-        </div>
-        <div className="flex flex-col space-y-3">
           <label className="text-light-green" htmlFor="technologies">
             Technologies:
           </label>
           <TechnologySelect setTechnologies={techChange} />
         </div>
         <div className="flex flex-col space-y-3">
-          <label className="text-light-green" htmlFor="siteURL">
-            Site URL:
+          <label
+            className="text-light-green flex items-center gap-2"
+            htmlFor="startDate"
+          >
+            Start Date:
+            <FaCalendarAlt />
           </label>
           <input
-            type="text"
-            id="siteURL"
-            name="siteURL"
+            type="date"
+            id="startDate"
+            name="startDate"
             onChange={formChange}
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
         </div>
         <div className="flex flex-col space-y-3">
           <label
-            className="text-light-green pointer-events-none"
-            htmlFor="image"
+            className="text-light-green flex items-center gap-2"
+            htmlFor="startDate"
           >
-            Project Image:
+            End Date:
+            <FaCalendarAlt />
           </label>
-          {formDetails.image && (
-            <div className="w-[200px]">
-              <img src={URL.createObjectURL(formDetails.image)} alt="" />
-            </div>
-          )}
           <input
-            type="file"
-            id="image"
-            name="image"
+            type="date"
+            id="endDate"
+            name="endDate"
             onChange={formChange}
-            className="text-light-green file:mr-4 file:p-1 file:bg-dark-green file:border-none file:hover:bg-base-green file:text-light-primary file:rounded-md file:pointer-events-auto pointer-events-none"
+            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
         </div>
         <div className="flex justify-center items-center">
@@ -153,19 +140,17 @@ export default function AddProject() {
             disabled={
               loading ||
               !(
-                formDetails.title != "" &&
-                formDetails.tags != "" &&
+                formDetails.jobTitle != "" &&
+                formDetails.companyName != "" &&
                 formDetails.description != "" &&
-                formDetails.complexity != "" &&
                 formDetails.technologies != "" &&
-                formDetails.siteURL != "" &&
-                formDetails.image != null
+                formDetails.startDate != ""
               )
             }
-            onClick={handleAddProject}
+            onClick={handleAddExperience}
             className="bg-dark-green hover:bg-base-green mt-4 w-[400px] h-10 disabled:bg-gray-500"
           >
-            ADD PROJECT
+            ADD EXPERIENCE
           </button>
         </div>
       </form>

@@ -1,6 +1,6 @@
 import { useState, Children, useEffect } from "react";
-import { capitalize } from "../../../_helpers/capitalize";
-import { useTechnologyContext } from "../../../_contexts/TechnologyContextProvider";
+import { capitalize } from "../../_helpers/capitalize";
+import { useTechnologyContext } from "../../_contexts/TechnologyContextProvider";
 
 export default function TechnologySelect({
   setTechnologies,
@@ -48,7 +48,7 @@ export default function TechnologySelect({
   }
   return (
     <div
-      className="flex flex-col group"
+      className="flex flex-col group "
       onFocus={openDropdown}
       onBlur={closeDropdown}
       tabIndex="0"
@@ -62,7 +62,7 @@ export default function TechnologySelect({
         <div className="bg-red-200 relative">
           <div
             className={
-              "absolute right-0 left-0 p-2 bg-light-green/85" +
+              "absolute right-0 left-0 p-2 bg-light-green/85  z-1000" +
               (dropdownToggle ? " " : " hidden")
             }
           >
