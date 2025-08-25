@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useProjectContext } from "../../../_contexts/ProjectContextProvider";
+import { useExperienceContext } from "../../../_contexts/ExperienceContextProvider";
+import { FaCalendarAlt } from "react-icons/fa";
 import TechnologySelect from "../TechnologySelect";
 import Loading from "../Loading";
 
 export default function UpdateExperience() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { fetchProject, updateProject } = useProjectContext();
-  const [project, setProject] = useState(null);
+  const { fetchExperience, updateExperience } = useExperienceContext();
+  const [experience, setExperience] = useState(null);
   const [formDetails, setFormDetails] = useState({});
 
   const [loading, setLoading] = useState(false);
@@ -16,36 +17,32 @@ export default function UpdateExperience() {
 
   useEffect(() => {
     setLoadScreen(true);
-    async function getProject() {
-      const res = await fetchProject(id);
+    async function getExperience() {
+      const res = await fetchExperience(id);
       if (res.success) {
-        setProject(res.data);
+        setExperience(res.data);
       } else {
         console.log(res.errors);
-        navigate("/admin/projects");
+        navigate("/admin/experience");
       }
       setLoadScreen(false);
     }
 
-    getProject();
+    getExperience();
   }, []);
 
   function formChange(e) {
-    if (e.target.name == "image") {
-      setFormDetails({ ...formDetails, image: e.target.files[0] });
+    if (e.target.value != experience[e.target.name]) {
+      setFormDetails({ ...formDetails, [e.target.name]: e.target.value });
     } else {
-      if (e.target.value != project[e.target.name]) {
-        setFormDetails({ ...formDetails, [e.target.name]: e.target.value });
-      } else {
-        const temp = { ...formDetails };
-        delete temp[e.target.name];
-        setFormDetails(temp);
-      }
+      const temp = { ...formDetails };
+      delete temp[e.target.name];
+      setFormDetails(temp);
     }
   }
 
   function techChange(value) {
-    if (value != project.technologies) {
+    if (value != experience.technologies) {
       setFormDetails({ ...formDetails, technologies: value });
     } else {
       const temp = { ...formDetails };
@@ -54,38 +51,14 @@ export default function UpdateExperience() {
     }
   }
 
-  async function handleUpdateProject(e) {
+  async function handleUpdateExperience(e) {
     e.preventDefault();
     setLoading(true);
 
-    const formData = new FormData();
-
-    if (formDetails.title) {
-      formData.append("title", formDetails.title);
-    }
-    if (formDetails.tags) {
-      formData.append("tags", formDetails.tags);
-    }
-    if (formDetails.description) {
-      formData.append("description", formDetails.description);
-    }
-    if (formDetails.complexity) {
-      formData.append("complexity", formDetails.complexity);
-    }
-    if (formDetails.technologies) {
-      formData.append("technologies", formDetails.technologies);
-    }
-    if (formDetails.siteURL) {
-      formData.append("siteURL", formDetails.siteURL);
-    }
-    if (formDetails.image != null) {
-      formData.append("project-image", formDetails.image);
-    }
-
-    const res = await updateProject(formData, project._id);
+    const res = await updateExperience(formDetails, experience._id);
 
     if (res.success) {
-      navigate("/admin/projects");
+      navigate("/admin/experience");
     } else {
       console.log(res.errors);
     }
@@ -104,27 +77,33 @@ export default function UpdateExperience() {
         className="w-full text-xl flex flex-col space-y-10"
       >
         <div className="flex flex-col space-y-3">
-          <label className="text-light-green" htmlFor="title">
-            Title:
+          <label className="text-light-green" htmlFor="jobTitle">
+            Job Title:
           </label>
           <input
             type="text"
-            id="title"
-            name="title"
-            value={formDetails.title ? formDetails.title : project.title}
+            id="jobTitle"
+            name="jobTitle"
+            value={
+              formDetails.jobTitle ? formDetails.jobTitle : experience.jobTitle
+            }
             onChange={formChange}
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
         </div>
         <div className="flex flex-col space-y-3">
           <label className="text-light-green" htmlFor="tags">
-            Tags:
+            Company Name:
           </label>
           <input
             type="text"
-            id="tags"
-            name="tags"
-            value={formDetails.tags ? formDetails.tags : project.tags}
+            id="companyName"
+            name="companyName"
+            value={
+              formDetails.companyName
+                ? formDetails.companyName
+                : experience.companyName
+            }
             onChange={formChange}
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
@@ -140,26 +119,7 @@ export default function UpdateExperience() {
             value={
               formDetails.description
                 ? formDetails.description
-                : project.description
-            }
-            onChange={formChange}
-            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
-          />
-        </div>
-        <div className="flex flex-col space-y-3">
-          <label className="text-light-green" htmlFor="complexity">
-            Complexity:
-          </label>
-          <input
-            type="number"
-            min="1"
-            max="10"
-            id="complexity"
-            name="complexity"
-            value={
-              formDetails.complexity
-                ? formDetails.complexity
-                : project.complexity
+                : experience.description
             }
             onChange={formChange}
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
@@ -171,54 +131,60 @@ export default function UpdateExperience() {
           </label>
           <TechnologySelect
             setTechnologies={techChange}
-            initialValue={project.technologies.split(",")}
+            initialValue={experience.technologies.split(",")}
           />
         </div>
         <div className="flex flex-col space-y-3">
-          <label className="text-light-green" htmlFor="siteURL">
-            Site URL:
+          <label
+            className="text-light-green flex items-center gap-2"
+            htmlFor="siteURL"
+          >
+            Start Date:
+            <FaCalendarAlt />
           </label>
           <input
-            type="text"
-            id="siteURL"
-            name="siteURL"
-            value={formDetails.siteURL ? formDetails.siteURL : project.siteURL}
+            type="date"
+            id="startDate"
+            name="startDate"
+            value={
+              formDetails.startDate
+                ? formDetails.startDate.slice(0, 10)
+                : experience.startDate
+                ? experience.startDate.slice(0, 10)
+                : ""
+            }
             onChange={formChange}
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
         </div>
         <div className="flex flex-col space-y-3">
           <label
-            className="text-light-green pointer-events-none"
-            htmlFor="image"
+            className="text-light-green flex items-center gap-2"
+            htmlFor="siteURL"
           >
-            Project Image:
+            Start Date:
+            <FaCalendarAlt />
           </label>
-          {formDetails.image && (
-            <div className="w-[200px]">
-              <img
-                src={
-                  formDetails.image
-                    ? URL.createObjectURL(formDetails.image)
-                    : project.imgURL
-                }
-                alt=""
-              />
-            </div>
-          )}
           <input
-            type="file"
-            id="image"
-            name="image"
+            type="date"
+            id="endDate"
+            name="endDate"
+            value={
+              formDetails.endDate
+                ? formDetails.endDate.slice(0, 10)
+                : experience.endDate
+                ? experience.endDate.slice(0, 10)
+                : ""
+            }
             onChange={formChange}
-            className="text-light-green file:mr-4 file:p-1 file:bg-dark-green file:border-none file:hover:bg-base-green file:text-light-primary file:rounded-md file:pointer-events-auto pointer-events-none"
+            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
         </div>
         <div className="flex justify-center items-center">
           <button
             type="submit"
             disabled={loading || Object.keys(formDetails).length == 0}
-            onClick={handleUpdateProject}
+            onClick={handleUpdateExperience}
             className="bg-dark-green hover:bg-base-green mt-4 w-[400px] h-10 disabled:bg-gray-500"
           >
             SAVE CHANGES

@@ -1,5 +1,5 @@
 import React from "react";
-// import AdminProjectList from "./AdminProjectList";
+import AdminExperienceList from "./AdminExperienceList";
 import { useNavigate } from "react-router-dom";
 
 export default function AdminExperience() {
@@ -17,7 +17,7 @@ export default function AdminExperience() {
       <div className="text-3xl font-bold text-center text-dark-green dark:text-light-green">
         EXPERIENCE
       </div>
-      {/* <AdminProjectList /> */}
+      <AdminExperienceList />
     </div>
   );
 }
