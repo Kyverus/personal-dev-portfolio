@@ -65,9 +65,7 @@ export function ExperienceContextProvider({ children }) {
         experienceForm,
         {
           headers: {
-            Accept:
-              "application/json, application/xml, text/plain, text/html, *.*",
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json",
           },
         }
       );
@@ -95,9 +93,7 @@ export function ExperienceContextProvider({ children }) {
         experienceForm,
         {
           headers: {
-            Accept:
-              "application/json, application/xml, text/plain, text/html, *.*",
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json",
           },
         }
       );

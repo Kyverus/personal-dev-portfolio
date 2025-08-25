@@ -19,11 +19,7 @@ export default function AddExperience() {
   const [loading, setLoading] = useState(false);
 
   function formChange(e) {
-    if (e.target.name == "image") {
-      setFormDetails({ ...formDetails, image: e.target.files[0] });
-    } else {
-      setFormDetails({ ...formDetails, [e.target.name]: e.target.value });
-    }
+    setFormDetails({ ...formDetails, [e.target.name]: e.target.value });
   }
 
   function techChange(value) {
@@ -34,20 +30,10 @@ export default function AddExperience() {
     e.preventDefault();
     setLoading(true);
 
-    console.log({ ...formDetails });
-
-    const formData = new FormData();
-    formData.append("jobTitle", formDetails.jobTitle);
-    formData.append("companyName", formDetails.companyName);
-    formData.append("description", formDetails.description);
-    formData.append("technologies", formDetails.technologies);
-    formData.append("startDate", formDetails.startDate);
-    formData.append("endDate", formDetails.endDate);
-
-    const res = await createExperience(formData);
+    const res = await createExperience(formDetails);
 
     if (res.success) {
-      navigate("/admin/projects");
+      navigate("/admin/experience");
     } else {
       console.log(res.errors);
     }
