@@ -23,7 +23,9 @@ export default function AdminExperienceItem({ experience }) {
             <div className="text-light-green font-bold">
               {experience.startDate.slice(0, 10) +
                 " - " +
-                (experience.endDate ? experience.endDate : "Present")}
+                (experience.endDate
+                  ? experience.endDate.slice(0, 10)
+                  : "Present")}
             </div>
             <div>Job Title: {experience.jobTitle}</div>
             <div>Company Name: {experience.companyName}</div>

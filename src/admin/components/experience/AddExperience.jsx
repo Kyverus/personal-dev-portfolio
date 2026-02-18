@@ -12,6 +12,7 @@ export default function AddExperience() {
     companyName: "",
     description: "",
     technologies: "",
+    tags: "",
     startDate: null,
     endDate: null,
   });
@@ -74,7 +75,8 @@ export default function AddExperience() {
           <label className="text-light-green" htmlFor="description">
             Description:
           </label>
-          <input
+          <textarea
+            rows="3"
             type="text"
             id="description"
             name="description"
@@ -105,6 +107,18 @@ export default function AddExperience() {
           />
         </div>
         <div className="flex flex-col space-y-3">
+          <label className="text-light-green" htmlFor="tags">
+            Tags:
+          </label>
+          <input
+            type="text"
+            id="tags"
+            name="tags"
+            onChange={formChange}
+            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
+          />
+        </div>
+        <div className="flex flex-col space-y-3">
           <label
             className="text-light-green flex items-center gap-2"
             htmlFor="startDate"
@@ -130,6 +144,7 @@ export default function AddExperience() {
                 formDetails.companyName != "" &&
                 formDetails.description != "" &&
                 formDetails.technologies != "" &&
+                formDetails.tags != "" &&
                 formDetails.startDate != ""
               )
             }

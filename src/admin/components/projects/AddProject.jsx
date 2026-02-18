@@ -36,7 +36,7 @@ export default function AddProject() {
 
     const formData = new FormData();
     formData.append("title", formDetails.title);
-    formData.append("tags", formDetails.type);
+    formData.append("tags", formDetails.tags);
     formData.append("description", formDetails.description);
     formData.append("complexity", formDetails.complexity);
     formData.append("technologies", formDetails.technologies);

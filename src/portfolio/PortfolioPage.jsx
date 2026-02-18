@@ -2,6 +2,7 @@ import { NavBar } from "./components/NavBar";
 import { About } from "./components/About/About";
 import { Projects } from "./components/Projects/Projects";
 import { Contact } from "./components/Contact/Contact";
+import { Experience } from "./components/Experience/Experience";
 import { Resume } from "./components/Resume/Resume";
 import { Footer } from "./components/Footer";
 
@@ -20,6 +21,7 @@ export default function PortfolioPage() {
       <NavBar />
       <About />
       <Projects />
+      <Experience />
       <Resume />
       <Contact />
       <Footer />

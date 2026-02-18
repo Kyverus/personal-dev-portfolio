@@ -109,10 +109,14 @@ export default function UpdateExperience() {
           />
         </div>
         <div className="flex flex-col space-y-3">
-          <label className="text-light-green" htmlFor="description">
+          <label
+            className="text-light-green whitespace-pre-wrap"
+            htmlFor="description"
+          >
             Description:
           </label>
-          <input
+          <textarea
+            rows="3"
             type="text"
             id="description"
             name="description"
@@ -135,6 +139,19 @@ export default function UpdateExperience() {
           />
         </div>
         <div className="flex flex-col space-y-3">
+          <label className="text-light-green" htmlFor="tags">
+            Tags:
+          </label>
+          <input
+            type="text"
+            id="tags"
+            name="tags"
+            value={formDetails.tags ? formDetails.tags : experience.tags}
+            onChange={formChange}
+            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
+          />
+        </div>
+        <div className="flex flex-col space-y-3">
           <label
             className="text-light-green flex items-center gap-2"
             htmlFor="siteURL"
@@ -150,8 +167,8 @@ export default function UpdateExperience() {
               formDetails.startDate
                 ? formDetails.startDate.slice(0, 10)
                 : experience.startDate
-                ? experience.startDate.slice(0, 10)
-                : ""
+                  ? experience.startDate.slice(0, 10)
+                  : ""
             }
             onChange={formChange}
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
@@ -162,7 +179,7 @@ export default function UpdateExperience() {
             className="text-light-green flex items-center gap-2"
             htmlFor="siteURL"
           >
-            Start Date:
+            End Date:
             <FaCalendarAlt />
           </label>
           <input
@@ -173,8 +190,8 @@ export default function UpdateExperience() {
               formDetails.endDate
                 ? formDetails.endDate.slice(0, 10)
                 : experience.endDate
-                ? experience.endDate.slice(0, 10)
-                : ""
+                  ? experience.endDate.slice(0, 10)
+                  : ""
             }
             onChange={formChange}
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
