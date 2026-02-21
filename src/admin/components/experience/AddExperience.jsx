@@ -3,7 +3,6 @@ import { useExperienceContext } from "../../../_contexts/ExperienceContextProvid
 import { FaCalendarAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import TechnologySelect from "../TechnologySelect";
-import toast from "react-hot-toast";
 
 export default function AddExperience() {
   const navigate = useNavigate();

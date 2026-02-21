@@ -30,10 +30,10 @@ export function Banner() {
           </div>
         </div>
         <div className="lg:w-1/3 flex justify-center">
-          {/* <img
+          <img
             className="size-[300px] object-scale-down rounded-full dark:brightness-[0.9]"
             src={headerImg}
-          /> */}
+          />
         </div>
       </div>
     </div>
