@@ -1,6 +1,9 @@
 import React, { useContext, createContext, useEffect, useState } from "react";
 import { axiosPrivate } from "../_api/axios.js";
 import { isAxiosError } from "axios";
+import { useAPIRequestHandler } from "../_hooks/useAPIRequestHandler.js";
+import { useAPIErrorHandler } from "../_hooks/useAPIErrorHandler.js";
+import { toast } from "react-toastify";
 
 const ProjectContext = createContext([]);
 
@@ -9,7 +12,7 @@ export function useProjectContext() {
 
   if (context === undefined) {
     throw new Error(
-      "useProjectContext must be used within a useProjectContext"
+      "useProjectContext must be used within a useProjectContext",
     );
   }
   return context;
@@ -17,120 +20,92 @@ export function useProjectContext() {
 
 export function ProjectContextProvider({ children }) {
   const [projects, setProjects] = useState([]);
+  const { handleAPIRequest } = useAPIRequestHandler();
+  const { handleAPIErrors } = useAPIErrorHandler();
 
   useEffect(() => {
     fetchProjects();
   }, []);
 
   async function fetchProjects() {
-    try {
-      const response = await axiosPrivate.get("/api/projects/", {
+    const response = await handleAPIRequest(() =>
+      axiosPrivate.get("/api/projects/", {
         headers: {
           "Content-Type": "application/json",
         },
-      });
-      if (response.status === 200) {
-        setProjects(response.data);
-      }
-    } catch (error) {
-      console.log(error.response?.data);
-    }
+      }),
+    );
+
+    const success = await handleAPIErrors(response);
+
+    if (success) setProjects(response.data);
+    return { success };
   }
 
   async function fetchProject(projectId) {
-    try {
-      const response = await axiosPrivate.get(`/api/projects/${projectId}`, {
+    const response = await handleAPIRequest(() =>
+      axiosPrivate.get(`/api/projects/${projectId}`, {
         headers: {
           "Content-Type": "application/json",
         },
-      });
-      if (response.status === 200) {
-        return { success: true, data: response.data };
-      }
-    } catch (error) {
-      console.log(error.response?.data);
-      if (isAxiosError(error)) {
-        return { success: false, errors: error.response?.data };
-      } else {
-        return { success: false, errors: error };
-      }
-    }
+      }),
+    );
+
+    console.log(response.data);
+
+    const success = handleAPIErrors(response);
+    return success ? { success, data: response.data } : { success };
   }
 
   async function createProject(projectForm) {
-    try {
-      const response = await axiosPrivate.post("/api/projects", projectForm, {
+    const response = await handleAPIRequest(() =>
+      axiosPrivate.post("/api/projects", projectForm, {
         headers: {
           Accept:
             "application/json, application/xml, text/plain, text/html, *.*",
           "Content-Type": "multipart/form-data",
         },
-      });
+      }),
+    );
 
-      if (response.status === 200) {
-        fetchProjects();
-        return { success: true };
-      }
-
-      throw response;
-    } catch (error) {
-      console.log(error.response?.data);
-      if (isAxiosError(error)) {
-        return { success: false, errors: error.response?.data };
-      } else {
-        return { success: false, errors: error };
-      }
+    const success = handleAPIErrors(response);
+    if (success) {
+      toast.success("Successfully Created!");
+      fetchProjects();
     }
+    return { success };
   }
 
   async function updateProject(projectForm, projectId) {
-    console.log([...projectForm]);
-    try {
-      const response = await axiosPrivate.put(
-        `/api/projects/${projectId}`,
-        projectForm,
-        {
-          headers: {
-            Accept:
-              "application/json, application/xml, text/plain, text/html, *.*",
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+    const response = await handleAPIRequest(() =>
+      axiosPrivate.put(`/api/projects/${projectId}`, projectForm, {
+        headers: {
+          Accept:
+            "application/json, application/xml, text/plain, text/html, *.*",
+          "Content-Type": "multipart/form-data",
+        },
+      }),
+    );
 
-      if (response.status === 200) {
-        fetchProjects();
-        return { success: true };
-      }
-      throw response;
-    } catch (error) {
-      console.log(error.response?.data);
-      if (isAxiosError(error)) {
-        return { success: false, errors: error.response?.data };
-      } else {
-        return { success: false, errors: error };
-      }
+    const success = handleAPIErrors(response);
+    if (success) {
+      toast.success("Successfully Updated!");
+      fetchProjects();
     }
+    return { success };
   }
 
   async function deleteProject(projectId) {
-    try {
-      const response = await axiosPrivate.delete(`/api/projects/${projectId}`);
+    const response = await handleAPIRequest(() =>
+      axiosPrivate.delete(`/api/projects/${projectId}`),
+    );
 
-      if (response.status === 200) {
-        fetchProjects();
-        return { success: true };
-      }
-
-      throw response;
-    } catch (error) {
-      console.log(error.response?.data);
-      if (isAxiosError(error)) {
-        return { success: false, errors: error.response?.data };
-      } else {
-        return { success: false, errors: error };
-      }
+    const success = handleAPIErrors(response);
+    if (success) {
+      toast.success("Successfully Deleted!");
+      fetchProjects();
     }
+    return { success };
   }
 
   return (

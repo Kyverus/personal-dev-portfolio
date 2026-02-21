@@ -7,6 +7,7 @@ export default function MenuBar() {
       <Link to={"/admin/projects"}>Projects</Link>
       <Link to={"/admin/technologies"}>Technologies</Link>
       <Link to={"/admin/experience"}>Experience</Link>
+      <Link to={"/admin/app-settings"}>Settings</Link>
     </div>
   );
 }

@@ -21,7 +21,6 @@ export default function UpdateProject() {
       if (res.success) {
         setProject(res.data);
       } else {
-        console.log(res.errors);
         navigate("/admin/projects");
       }
       setLoadScreen(false);
@@ -83,13 +82,7 @@ export default function UpdateProject() {
     }
 
     const res = await updateProject(formData, project._id);
-
-    if (res.success) {
-      navigate("/admin/projects");
-    } else {
-      console.log(res.errors);
-    }
-
+    if (res.success) navigate("/admin/projects");
     setLoading(false);
   }
 
@@ -194,18 +187,16 @@ export default function UpdateProject() {
           >
             Project Image:
           </label>
-          {formDetails.image && (
-            <div className="w-[200px]">
-              <img
-                src={
-                  formDetails.image
-                    ? URL.createObjectURL(formDetails.image)
-                    : project.imgURL
-                }
-                alt=""
-              />
-            </div>
-          )}
+          <div className="w-[200px]">
+            <img
+              src={
+                formDetails.image
+                  ? URL.createObjectURL(formDetails.image)
+                  : project.imgURL
+              }
+              alt=""
+            />
+          </div>
           <input
             type="file"
             id="image"

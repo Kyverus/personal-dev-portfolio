@@ -7,12 +7,6 @@ export default function AdminProjectItem({ project }) {
 
   async function handleProjectDelete(projectId) {
     const res = await deleteProject(projectId);
-
-    if (res.success) {
-      console.log("Project deleted successfully");
-    } else {
-      console.log(res.errors);
-    }
   }
 
   return (

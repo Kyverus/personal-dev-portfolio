@@ -7,12 +7,6 @@ export default function AdminExperienceItem({ experience }) {
 
   async function handleExperienceDelete(experienceId) {
     const res = await deleteExperience(experienceId);
-
-    if (res.success) {
-      console.log("Experience deleted successfully");
-    } else {
-      console.log(res.errors);
-    }
   }
 
   return (

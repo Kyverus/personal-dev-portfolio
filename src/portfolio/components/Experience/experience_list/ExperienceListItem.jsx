@@ -64,8 +64,8 @@ export function ExperienceListItem({ exp, className }) {
         </div>
       </div>
       <ul className="list-disc list-inside p-2">
-        {descriptionList.map((desc) => {
-          return <li>{desc}</li>;
+        {descriptionList.map((desc, index) => {
+          return <li key={`desc-${index}`}>{desc}</li>;
         })}
       </ul>
       <hr className="border-t-2 border-dark-green dark:border-light-green my-5" />

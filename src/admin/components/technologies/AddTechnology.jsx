@@ -38,12 +38,8 @@ export default function AddTechnology() {
     formData.append("tech-image", formDetails.image);
 
     const res = await createTechnology(formData);
+    if (res.success) navigate("/admin/technologies");
 
-    if (res.success) {
-      navigate("/admin/technologies");
-    } else {
-      console.log(res.errors);
-    }
     setLoading(false);
   }
   return (

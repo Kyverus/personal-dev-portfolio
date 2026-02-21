@@ -110,8 +110,8 @@ export function NavBar() {
                         ? " fill-light-green"
                         : " fill-dark-green"
                       : dark
-                      ? " fill-light-primary"
-                      : " fill-dark-primary")
+                        ? " fill-light-primary"
+                        : " fill-dark-primary")
                   }
                 />
               </a>
@@ -122,6 +122,7 @@ export function NavBar() {
                   {navigationMenus.map((menu) => {
                     return (
                       <CustomLink
+                        key={`wide-${menu.menuname}`}
                         path={menu.path}
                         className={
                           activeSection == menu.menuname ? "text-base-cyan" : ""
@@ -165,6 +166,7 @@ export function NavBar() {
             {navigationMenus.map((menu) => {
               return (
                 <CloseButton
+                  key={`slim-${menu.menuname}`}
                   as={CustomLink}
                   path={menu.path}
                   className={

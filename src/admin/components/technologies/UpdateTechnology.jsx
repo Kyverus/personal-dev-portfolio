@@ -21,7 +21,6 @@ export default function UpdateTechnology() {
       if (res.success) {
         setTechnology(res.data);
       } else {
-        console.log(res.errors);
         navigate("/admin/technologies");
       }
       setLoadScreen(false);
@@ -75,11 +74,7 @@ export default function UpdateTechnology() {
 
     const res = await updateTechnology(formData, technology._id);
 
-    if (res.success) {
-      navigate("/admin/technologies");
-    } else {
-      console.log(res.errors);
-    }
+    if (res.success) navigate("/admin/technologies");
 
     setLoading(false);
   }

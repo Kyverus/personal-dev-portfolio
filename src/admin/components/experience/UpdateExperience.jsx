@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useExperienceContext } from "../../../_contexts/ExperienceContextProvider";
 import { FaCalendarAlt } from "react-icons/fa";
@@ -22,7 +22,6 @@ export default function UpdateExperience() {
       if (res.success) {
         setExperience(res.data);
       } else {
-        console.log(res.errors);
         navigate("/admin/experience");
       }
       setLoadScreen(false);
@@ -56,12 +55,7 @@ export default function UpdateExperience() {
     setLoading(true);
 
     const res = await updateExperience(formDetails, experience._id);
-
-    if (res.success) {
-      navigate("/admin/experience");
-    } else {
-      console.log(res.errors);
-    }
+    if (res.success) navigate("/admin/experience");
 
     setLoading(false);
   }

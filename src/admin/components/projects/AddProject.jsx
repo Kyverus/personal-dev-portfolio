@@ -44,13 +44,7 @@ export default function AddProject() {
     formData.append("project-image", formDetails.image);
 
     const res = await createProject(formData);
-
-    if (res.success) {
-      navigate("/admin/projects");
-    } else {
-      console.log(res.errors);
-    }
-
+    if (res.success) navigate("/admin/projects");
     setLoading(false);
   }
   return (

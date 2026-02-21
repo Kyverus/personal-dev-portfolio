@@ -8,12 +8,6 @@ export default function AdminTechnologyItem({ technology }) {
 
   async function handleTechnologyDelete(techId) {
     const res = await deleteTechnology(techId);
-
-    if (res.success) {
-      console.log("Technology deleted successfully");
-    } else {
-      console.log(res.errors);
-    }
   }
 
   return (

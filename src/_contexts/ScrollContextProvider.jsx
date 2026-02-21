@@ -26,7 +26,7 @@ export function ScrollContextProvider({ children }) {
       {
         rootMargin: "-50% 0% -50% 0%",
         threshold: 0,
-      }
+      },
     );
 
     document.querySelectorAll(".page-section").forEach((item) => {

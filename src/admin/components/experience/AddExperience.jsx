@@ -3,6 +3,7 @@ import { useExperienceContext } from "../../../_contexts/ExperienceContextProvid
 import { FaCalendarAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import TechnologySelect from "../TechnologySelect";
+import toast from "react-hot-toast";
 
 export default function AddExperience() {
   const navigate = useNavigate();
@@ -32,13 +33,7 @@ export default function AddExperience() {
     setLoading(true);
 
     const res = await createExperience(formDetails);
-
-    if (res.success) {
-      navigate("/admin/experience");
-    } else {
-      console.log(res.errors);
-    }
-
+    if (res.success) navigate("/admin/experience");
     setLoading(false);
   }
   return (

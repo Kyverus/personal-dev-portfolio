@@ -1,6 +1,8 @@
 import React, { useContext, createContext, useEffect, useState } from "react";
 import { axiosPrivate } from "../_api/axios.js";
-import { isAxiosError } from "axios";
+import { useAPIRequestHandler } from "../_hooks/useAPIRequestHandler.js";
+import { useAPIErrorHandler } from "../_hooks/useAPIErrorHandler.js";
+import { toast } from "react-toastify";
 
 const TechnologyContext = createContext([]);
 
@@ -9,7 +11,7 @@ export function useTechnologyContext() {
 
   if (context === undefined) {
     throw new Error(
-      "useTechnologyContext must be used within a useTechnologyContext"
+      "useTechnologyContext must be used within a useTechnologyContext",
     );
   }
   return context;
@@ -17,123 +19,90 @@ export function useTechnologyContext() {
 
 export function TechnologyContextProvider({ children }) {
   const [technologies, setTechnologies] = useState([]);
+  const { handleAPIRequest } = useAPIRequestHandler();
+  const { handleAPIErrors } = useAPIErrorHandler();
 
   useEffect(() => {
     fetchTechnologies();
   }, []);
 
   async function fetchTechnologies() {
-    try {
-      const response = await axiosPrivate.get("/api/technologies/", {
+    const response = await handleAPIRequest(() =>
+      axiosPrivate.get("/api/technologies/", {
         headers: {
           "Content-Type": "application/json",
         },
-      });
-      if (response.status === 200) {
-        setTechnologies(response.data);
-      }
-    } catch (error) {
-      console.log(error.response?.data);
-    }
+      }),
+    );
+
+    const success = await handleAPIErrors(response);
+
+    if (success) setTechnologies(response.data);
+    return { success };
   }
 
   async function fetchTechnology(techId) {
-    try {
-      const response = await axiosPrivate.get(`/api/technologies/${techId}`, {
+    const response = await handleAPIRequest(() =>
+      axiosPrivate.get(`/api/technologies/${techId}`, {
         headers: {
           "Content-Type": "application/json",
         },
-      });
-      if (response.status === 200) {
-        return { success: true, data: response.data };
-      }
-    } catch (error) {
-      console.log(error.response?.data);
-      if (isAxiosError(error)) {
-        return { success: false, errors: error.response?.data };
-      } else {
-        return { success: false, errors: error };
-      }
-    }
+      }),
+    );
+
+    const success = handleAPIErrors(response);
+    return success ? { success, data: response.data } : { success };
   }
 
   async function createTechnology(technologyForm) {
-    try {
-      const response = await axiosPrivate.post(
-        "/api/technologies",
-        technologyForm,
-        {
-          headers: {
-            Accept:
-              "application/json, application/xml, text/plain, text/html, *.*",
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+    const response = await handleAPIRequest(() =>
+      axiosPrivate.post("/api/technologies", technologyForm, {
+        headers: {
+          Accept:
+            "application/json, application/xml, text/plain, text/html, *.*",
+          "Content-Type": "multipart/form-data",
+        },
+      }),
+    );
 
-      if (response.status === 200) {
-        fetchTechnologies();
-        return { success: true };
-      }
-
-      throw response;
-    } catch (error) {
-      console.log(error.response?.data);
-      if (isAxiosError(error)) {
-        return { success: false, errors: error.response?.data };
-      } else {
-        return { success: false, errors: error };
-      }
+    const success = handleAPIErrors(response);
+    if (success) {
+      toast.success("Successfully Created!");
+      fetchTechnologies();
     }
+    return { success };
   }
 
   async function updateTechnology(technologyForm, techId) {
-    try {
-      const response = await axiosPrivate.put(
-        `/api/technologies/${techId}`,
-        technologyForm,
-        {
-          headers: {
-            Accept:
-              "application/json, application/xml, text/plain, text/html, *.*",
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+    const response = await handleAPIRequest(() =>
+      axiosPrivate.put(`/api/technologies/${techId}`, technologyForm, {
+        headers: {
+          Accept:
+            "application/json, application/xml, text/plain, text/html, *.*",
+          "Content-Type": "multipart/form-data",
+        },
+      }),
+    );
 
-      if (response.status === 200) {
-        fetchTechnologies();
-        return { success: true };
-      }
-      throw response;
-    } catch (error) {
-      console.log(error.response?.data);
-      if (isAxiosError(error)) {
-        return { success: false, errors: error.response?.data };
-      } else {
-        return { success: false, errors: error };
-      }
+    const success = handleAPIErrors(response);
+    if (success) {
+      toast.success("Successfully Updated!");
+      fetchTechnologies();
     }
+    return { success };
   }
 
   async function deleteTechnology(techId) {
-    try {
-      const response = await axiosPrivate.delete(`/api/technologies/${techId}`);
+    const response = await handleAPIRequest(() =>
+      axiosPrivate.delete(`/api/technologies/${techId}`),
+    );
 
-      if (response.status === 200) {
-        fetchTechnologies();
-        return { success: true };
-      }
-
-      throw response;
-    } catch (error) {
-      console.log(error.response?.data);
-      if (isAxiosError(error)) {
-        return { success: false, errors: error.response?.data };
-      } else {
-        return { success: false, errors: error };
-      }
+    const success = handleAPIErrors(response);
+    if (success) {
+      toast.success("Successfully Deleted!");
+      fetchTechnologies();
     }
+    return { success };
   }
   return (
     <TechnologyContext.Provider

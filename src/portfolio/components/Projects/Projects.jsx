@@ -13,6 +13,8 @@ export function Projects() {
   const mainProjects = projects.filter((project) => {
     const tags = project.tags;
 
+    if (tags.includes("hidden")) return false;
+
     if (tag == "main") {
       return tags.includes(tag);
     } else {
