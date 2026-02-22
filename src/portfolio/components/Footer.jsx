@@ -10,7 +10,6 @@ export function Footer() {
         document.documentElement.scrollHeight
       ) {
         setScrolledEnd(true);
-        console.log("end");
       } else {
         setScrolledEnd(false);
       }

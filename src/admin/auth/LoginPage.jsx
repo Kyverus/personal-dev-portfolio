@@ -47,6 +47,7 @@ function LoginPage() {
             <label htmlFor="username">USERNAME</label>
             <input
               ref={usernameRef}
+              autoComplete="username"
               className="text-black p-2"
               type="text"
               id="username"
@@ -58,6 +59,7 @@ function LoginPage() {
             <label htmlFor="password">PASSWORD</label>
             <input
               ref={passwordRef}
+              autoComplete="current-password"
               className="text-black p-2"
               type="password"
               id="password"

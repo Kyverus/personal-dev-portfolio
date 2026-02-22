@@ -16,7 +16,7 @@ export function useAPIRequestHandler() {
         return {
           data: null,
           errors: error,
-          errors: error.response?.status || 500,
+          status: error.response?.status || 500,
         };
       }
     },

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAuthContext } from "../../_contexts/AuthContextProvider";
 import { useNavigate } from "react-router-dom";
 
-export default function Logout() {
+export function Logout() {
   const [loading, setLoading] = useState(false);
   const { logoutUser } = useAuthContext();
   const navigate = useNavigate();
@@ -10,8 +10,8 @@ export default function Logout() {
   async function handleLogout() {
     setLoading(true);
     await logoutUser();
-    navigate("/");
     setLoading(false);
+    navigate("/login");
   }
   return (
     <button

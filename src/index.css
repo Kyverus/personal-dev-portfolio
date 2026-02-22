@@ -9,3 +9,33 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   right: 0; /* Position to the right */
   width: 100%; /* Cover full input */
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  /* Chrome, Safari, Edge */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent; /* remove white background */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  /* Firefox */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #888 transparent; /* thumb | transparent track */
+  }
+}

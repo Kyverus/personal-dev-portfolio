@@ -50,7 +50,7 @@ export function TechnologyContextProvider({ children }) {
       }),
     );
 
-    const success = handleAPIErrors(response);
+    const success = await handleAPIErrors(response);
     return success ? { success, data: response.data } : { success };
   }
 
@@ -65,7 +65,7 @@ export function TechnologyContextProvider({ children }) {
       }),
     );
 
-    const success = handleAPIErrors(response);
+    const success = await handleAPIErrors(response);
     if (success) {
       toast.success("Successfully Created!");
       fetchTechnologies();
@@ -84,7 +84,7 @@ export function TechnologyContextProvider({ children }) {
       }),
     );
 
-    const success = handleAPIErrors(response);
+    const success = await handleAPIErrors(response);
     if (success) {
       toast.success("Successfully Updated!");
       fetchTechnologies();
@@ -97,7 +97,7 @@ export function TechnologyContextProvider({ children }) {
       axiosPrivate.delete(`/api/technologies/${techId}`),
     );
 
-    const success = handleAPIErrors(response);
+    const success = await handleAPIErrors(response);
     if (success) {
       toast.success("Successfully Deleted!");
       fetchTechnologies();

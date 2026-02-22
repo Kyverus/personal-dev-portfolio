@@ -51,9 +51,7 @@ export function ProjectContextProvider({ children }) {
       }),
     );
 
-    console.log(response.data);
-
-    const success = handleAPIErrors(response);
+    const success = await handleAPIErrors(response);
     return success ? { success, data: response.data } : { success };
   }
 
@@ -68,7 +66,7 @@ export function ProjectContextProvider({ children }) {
       }),
     );
 
-    const success = handleAPIErrors(response);
+    const success = await handleAPIErrors(response);
     if (success) {
       toast.success("Successfully Created!");
       fetchProjects();
@@ -87,7 +85,7 @@ export function ProjectContextProvider({ children }) {
       }),
     );
 
-    const success = handleAPIErrors(response);
+    const success = await handleAPIErrors(response);
     if (success) {
       toast.success("Successfully Updated!");
       fetchProjects();
@@ -100,7 +98,7 @@ export function ProjectContextProvider({ children }) {
       axiosPrivate.delete(`/api/projects/${projectId}`),
     );
 
-    const success = handleAPIErrors(response);
+    const success = await handleAPIErrors(response);
     if (success) {
       toast.success("Successfully Deleted!");
       fetchProjects();

@@ -53,7 +53,7 @@ export function ExperienceContextProvider({ children }) {
       }),
     );
 
-    const success = handleAPIErrors(response);
+    const success = await handleAPIErrors(response);
     return success ? { success, data: response.data } : { success };
   }
 
@@ -66,7 +66,7 @@ export function ExperienceContextProvider({ children }) {
       }),
     );
 
-    const success = handleAPIErrors(response);
+    const success = await handleAPIErrors(response);
     if (success) {
       toast.success("Successfully Created!");
       fetchExperiences();
@@ -83,7 +83,7 @@ export function ExperienceContextProvider({ children }) {
       }),
     );
 
-    const success = handleAPIErrors(response);
+    const success = await handleAPIErrors(response);
     if (success) {
       toast.success("Successfully Updated!");
       fetchExperiences();
@@ -95,7 +95,7 @@ export function ExperienceContextProvider({ children }) {
     const response = await handleAPIRequest(() =>
       axiosPrivate.delete(`/api/experiences/${expId}`),
     );
-    const success = handleAPIErrors(response);
+    const success = await handleAPIErrors(response);
     if (success) {
       toast.success("Successfully Deleted!");
       fetchExperiences();
