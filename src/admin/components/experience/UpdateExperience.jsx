@@ -145,7 +145,7 @@ export default function UpdateExperience() {
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
         </div>
-        <div className="flex flex-col space-y-3">
+        <div className="flex flex-col">
           <label
             className="text-light-green flex items-center gap-2"
             htmlFor="siteURL"
@@ -168,7 +168,7 @@ export default function UpdateExperience() {
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
         </div>
-        <div className="flex flex-col space-y-3">
+        <div className="flex flex-col">
           <label
             className="text-light-green flex items-center gap-2"
             htmlFor="siteURL"

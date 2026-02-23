@@ -100,7 +100,7 @@ export default function AddExperience() {
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
         </div>
-        <div className="flex flex-col space-y-3">
+        <div className="flex flex-col">
           <label className="text-light-green" htmlFor="tags">
             Tags:
           </label>
@@ -112,7 +112,7 @@ export default function AddExperience() {
             className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
           />
         </div>
-        <div className="flex flex-col space-y-3">
+        <div className="flex flex-col">
           <label
             className="text-light-green flex items-center gap-2"
             htmlFor="startDate"
@@ -138,7 +138,6 @@ export default function AddExperience() {
                 formDetails.companyName != "" &&
                 formDetails.description != "" &&
                 formDetails.technologies != "" &&
-                formDetails.tags != "" &&
                 formDetails.startDate != ""
               )
             }
