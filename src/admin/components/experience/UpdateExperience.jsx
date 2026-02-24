@@ -4,6 +4,7 @@ import { useExperienceContext } from "../../../_contexts/ExperienceContextProvid
 import { FaCalendarAlt } from "react-icons/fa";
 import TechnologySelect from "../TechnologySelect";
 import Loading from "../Loading";
+import { CustomDatePicker } from "./CustomDatePicker";
 
 export default function UpdateExperience() {
   const navigate = useNavigate();
@@ -62,6 +63,12 @@ export default function UpdateExperience() {
 
   if (loadScreen) {
     return <Loading />;
+  }
+
+  function parseDateString(dateStr) {
+    if (!dateStr) return undefined;
+    const d = new Date(dateStr);
+    return isNaN(d) ? undefined : d;
   }
 
   return (
@@ -153,10 +160,7 @@ export default function UpdateExperience() {
             Start Date:
             <FaCalendarAlt />
           </label>
-          <input
-            type="date"
-            id="startDate"
-            name="startDate"
+          <CustomDatePicker
             value={
               formDetails.startDate
                 ? formDetails.startDate.slice(0, 10)
@@ -164,8 +168,10 @@ export default function UpdateExperience() {
                   ? experience.startDate.slice(0, 10)
                   : ""
             }
-            onChange={formChange}
-            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
+            onChange={(date) =>
+              formChange({ target: { name: "startDate", value: date } })
+            }
+            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green caret-light-green bg-transparent focus:outline-light-green text-left"
           />
         </div>
         <div className="flex flex-col">
@@ -176,10 +182,7 @@ export default function UpdateExperience() {
             End Date:
             <FaCalendarAlt />
           </label>
-          <input
-            type="date"
-            id="endDate"
-            name="endDate"
+          <CustomDatePicker
             value={
               formDetails.endDate
                 ? formDetails.endDate.slice(0, 10)
@@ -187,8 +190,10 @@ export default function UpdateExperience() {
                   ? experience.endDate.slice(0, 10)
                   : ""
             }
-            onChange={formChange}
-            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
+            onChange={(date) =>
+              formChange({ target: { name: "endDate", value: date } })
+            }
+            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green caret-light-green bg-transparent focus:outline-light-green text-left"
           />
         </div>
         <div className="flex justify-center items-center">

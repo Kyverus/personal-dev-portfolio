@@ -3,6 +3,7 @@ import { useExperienceContext } from "../../../_contexts/ExperienceContextProvid
 import { FaCalendarAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import TechnologySelect from "../TechnologySelect";
+import { CustomDatePicker } from "./CustomDatePicker";
 
 export default function AddExperience() {
   const navigate = useNavigate();
@@ -92,12 +93,12 @@ export default function AddExperience() {
             Start Date:
             <FaCalendarAlt />
           </label>
-          <input
-            type="date"
-            id="startDate"
-            name="startDate"
-            onChange={formChange}
-            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
+          <CustomDatePicker
+            value={formDetails.startDate}
+            onChange={(date) =>
+              formChange({ target: { name: "startDate", value: date } })
+            }
+            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green caret-light-green bg-transparent focus:outline-light-green text-left"
           />
         </div>
         <div className="flex flex-col">
@@ -115,17 +116,17 @@ export default function AddExperience() {
         <div className="flex flex-col">
           <label
             className="text-light-green flex items-center gap-2"
-            htmlFor="startDate"
+            htmlFor="endDate"
           >
             End Date:
             <FaCalendarAlt />
           </label>
-          <input
-            type="date"
-            id="endDate"
-            name="endDate"
-            onChange={formChange}
-            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
+          <CustomDatePicker
+            value={formDetails.endDate}
+            onChange={(date) =>
+              formChange({ target: { name: "endDate", value: date } })
+            }
+            className="rounded-md px-2 py-1 border-[1px] border-light-primary hover:border-base-green caret-light-green bg-transparent focus:outline-light-green text-left"
           />
         </div>
         <div className="flex justify-center items-center">

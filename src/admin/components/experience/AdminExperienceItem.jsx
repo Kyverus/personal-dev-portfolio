@@ -1,4 +1,3 @@
-import React from "react";
 import { useExperienceContext } from "../../../_contexts/ExperienceContextProvider";
 import { Link } from "react-router-dom";
 
@@ -6,7 +5,9 @@ export default function AdminExperienceItem({ experience }) {
   const { deleteExperience } = useExperienceContext();
 
   async function handleExperienceDelete(experienceId) {
-    const res = await deleteExperience(experienceId);
+    if (window.confirm("Are you sure you want to delete this?")) {
+      const res = await deleteExperience(experienceId);
+    }
   }
 
   return (
