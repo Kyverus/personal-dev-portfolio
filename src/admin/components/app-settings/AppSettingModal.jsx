@@ -1,11 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export default function AddAppSettingModal({ isOpen, onClose, onSave }) {
+export default function AddAppSettingModal({
+  isOpen,
+  onClose,
+  onSubmit,
+  initialData,
+}) {
   const [loading, setLoading] = useState(false);
   const [formDetails, setFormDetails] = useState({
     settingName: "",
     settingValue: "",
   });
+
+  useEffect(() => {
+    if (initialData) {
+      setFormDetails(initialData); // edit mode
+    } else {
+      setFormDetails({ settingName: "", settingValue: "" }); // create mode
+    }
+  }, [initialData]);
 
   if (!isOpen) return null;
 
@@ -16,7 +29,7 @@ export default function AddAppSettingModal({ isOpen, onClose, onSave }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await onSave(formDetails);
+    await onSubmit(formDetails);
     setFormDetails({
       settingName: "",
       settingValue: "",
@@ -44,6 +57,7 @@ export default function AddAppSettingModal({ isOpen, onClose, onSave }) {
               type="text"
               id="settingName"
               name="settingName"
+              value={formDetails.settingName}
               className="w-full rounded-md px-3 py-2 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
               onChange={formChange}
               required
@@ -61,6 +75,7 @@ export default function AddAppSettingModal({ isOpen, onClose, onSave }) {
               type="text"
               id="settingValue"
               name="settingValue"
+              value={formDetails.settingValue}
               className="w-full rounded-md px-3 py-2 border-[1px] border-light-primary hover:border-base-green  caret-light-green bg-transparent focus:outline-light-green"
               onChange={formChange}
               required
@@ -87,7 +102,7 @@ export default function AddAppSettingModal({ isOpen, onClose, onSave }) {
                 )
               }
             >
-              Save Changes
+              {initialData ? "Update Changes" : "Save Changes"}
             </button>
           </div>
         </form>
