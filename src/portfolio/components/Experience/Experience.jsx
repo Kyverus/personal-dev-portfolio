@@ -14,7 +14,6 @@ export function Experience() {
   });
 
   return (
-    // visible_experiences.length > 0 && (
     <div
       className={`page-section pt-36 pb-8 space-y-10 text-black dark:text-white ${
         visible_experiences.length === 0 ? "hidden" : ""
@@ -26,6 +25,5 @@ export function Experience() {
       </div>
       <ExperienceList experiences={sortedExperiences} />
     </div>
-    // )
   );
 }

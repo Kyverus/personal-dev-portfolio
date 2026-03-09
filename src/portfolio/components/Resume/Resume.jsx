@@ -8,7 +8,7 @@ export function Resume() {
     <div className="page-section pt-36 pb-8 " id="resume">
       <div
         id="resume-card"
-        className="text-dark-primary dark:text-light-primary bg-light-green dark:bg-dark-green"
+        className="text-dark-primary dark:text-light-primary bg-light-green/60 dark:bg-dark-green/60"
       >
         <div className="text-2xl xs:text-3xl font-bold text-center px-2 py-8 text-dark-green dark:text-light-green">
           DOWNLOAD RESUME

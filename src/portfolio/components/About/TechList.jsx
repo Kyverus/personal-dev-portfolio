@@ -12,9 +12,13 @@ export function TechList({ technologies, imgClass, labelHidden }) {
   return (
     <div
       id="technology-list"
-      className="xl:container mx-auto rounded-xl py-4 space-y-4"
+      className={`xl:container mx-auto rounded-xl py-4 space-y-4 ${
+        technologies.length === 0 ? "hidden" : ""
+      }`}
     >
-      <div className="text-2xl xs:text-3xl font-bold text-center text-dark-green dark:text-light-green">
+      <div 
+        className="text-2xl xs:text-3xl font-bold text-left text-dark-green dark:text-light-green"
+      >
         {tag == "main"
           ? "MAIN TECHNOLOGIES"
           : `TECHNOLOGIES (${tag.toUpperCase()})`}

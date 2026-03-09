@@ -9,8 +9,8 @@ export default {
       },
       keyframes: {
         updown: {
-          "0%, 100%": { transform: "translateY(-10px)" },
-          "50%": { transform: "translateY(10px)" },
+          "0%, 100%": { transform: "translateY(-20px)" },
+          "50%": { transform: "translateY(5px)" },
         },
         appear: {
           "0%": {
@@ -23,7 +23,7 @@ export default {
       },
       animation: {
         appear: "appear 0.5s ease-in-out",
-        updown: "updown 3s linear infinite",
+        updown: "updown 5s linear infinite",
       },
       transitionProperty: {
         width: "width",

@@ -1,41 +1,50 @@
+import { useTechnologyContext } from "../../../_contexts/TechnologyContextProvider";
 import headerImg from "../../assets/images/header-picture.jpg";
 import { FaFilePdf } from "react-icons/fa6";
+import { TechList } from "./TechList";
 
 export function Banner() {
+  const { technologies } = useTechnologyContext();
+
+  const banner_details = {
+    title: "Web Developer",
+    motto: "Hello, I'm Kirlian Pacibe, A web developer with fundamental knowledge in building simple and functional websites and applications. I have developed several personal and work projects regarding web and desktop applications futher showcased below.", 
+  }
+
   return (
-    <div id="banner" className="xl:container mx-auto xl:px-28">
-      <div className="lg:flex py-10 px-5 xs:px-10">
-        <div className="lg:w-2/3">
-          <div className="rounded-2xl py-6 xs:px-6 space-y-8">
-            <div className="mt-10 text-4xl xs:text-5xl font-bold text-center xs:text-left text-dark-green dark:text-light-green">
-              Software Developer
+      <div id="banner" className="xl:container mx-auto xl:px-20 bg-white/40 dark:bg-black/40 rounded-xl">
+        <div className="lg:flex py-10 px-5 xs:px-10">
+          <div className="lg:w-2/3">
+            <div className="rounded-2xl py-6 xs:px-6 space-y-8">
+              <div className="mt-10 text-4xl xs:text-5xl font-bold text-center xs:text-left text-dark-green dark:text-light-green">
+                {banner_details.title}
+              </div>
+              <div className="text-sm xs:text-base text-dark-secondary dark:text-light-secondary text-justify indent-12 tracking-wider">
+                {banner_details.motto}
+              </div>
+              <div className="flex text-lg font-bold">
+                <a
+                  href="#resume"
+                  className="flex items-center gap-3 group text-base-green"
+                >
+                  <span className="group-hover:text-base-cyan">
+                    Check Out My Resume
+                  </span>
+                  <FaFilePdf className="size-5 group-hover:text-base-cyan" />
+                </a>
+              </div>
             </div>
-            <div className="text-sm xs:text-base text-dark-secondary dark:text-light-secondary text-justify indent-12 tracking-wider">
-              Hello, I'm Kirlian Pacibe, I have fundamental knowledge in
-              building simple and functional websites and applications. I have
-              made personal projects regarding web and desktop applications
-              futher showcased below.
-            </div>
-            <div className="flex text-lg font-bold">
-              <a
-                href="#resume"
-                className="flex items-center gap-3 group text-base-green"
-              >
-                <span className="group-hover:text-base-cyan">
-                  Check Out My Resume
-                </span>
-                <FaFilePdf className="size-5 group-hover:text-base-cyan" />
-              </a>
+            <div className="rounded-2xl py-6 xs:px-6 space-y-8">
+             <TechList technologies={technologies} />
             </div>
           </div>
-        </div>
-        <div className="lg:w-1/3 flex justify-center">
-          <img
-            className="size-[300px] object-scale-down rounded-full dark:brightness-[0.9]"
-            src={headerImg}
-          />
+          <div className="lg:w-1/3 flex justify-center animate-updown">
+            <img
+              className="h-[450px] object-scale-down rounded-full dark:brightness-[0.9]"
+              src={headerImg}
+            />
+          </div>
         </div>
       </div>
-    </div>
   );
 }

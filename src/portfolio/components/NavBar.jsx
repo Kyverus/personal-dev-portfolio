@@ -76,7 +76,7 @@ export function NavBar() {
           "transition-[all,_height] duration-700 origin-center w-full" +
           (scrolled
             ? " bg-white dark:bg-dark-secondary shadow-[0_0_2px_1px_rgb(0,0,0,0.3)] md:shadow-none md:bg-white/80 md:dark:bg-dark-secondary/80 py-0 text-dark-green dark:text-light-green"
-            : " mt-5 py-2 rounded-xl bg-light-green dark:bg-dark-green")
+            : " mt-5 py-2 rounded-xl bg-light-primary dark:bg-dark-primary")
         }
       >
         <div className="mx-auto max-w-7xl px-2 md:px-6 lg:px-8">
