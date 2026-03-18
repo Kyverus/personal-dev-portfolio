@@ -14,7 +14,7 @@ export default function TechFilter({ tag, setTag }) {
     <div className="flex flex-wrap gap-2 items-center justify-center">
       <button
         className={
-          "flex gap-2 items-center" + (tag == "main" ? " text-base-green" : "")
+          "flex gap-2 items-center" + (tag == "main" ? " text-base-cyan" : "")
         }
         onClick={() => changeTag("main")}
       >
@@ -23,7 +23,7 @@ export default function TechFilter({ tag, setTag }) {
       <button
         className={
           "flex gap-2 items-center" +
-          (tag == "frontend" ? " text-base-green" : "")
+          (tag == "frontend" ? " text-base-cyan" : "")
         }
         onClick={() => changeTag("frontend")}
       >
@@ -32,7 +32,7 @@ export default function TechFilter({ tag, setTag }) {
       <button
         className={
           "flex gap-2 items-center" +
-          (tag == "backend" ? " text-base-green" : "")
+          (tag == "backend" ? " text-base-cyan" : "")
         }
         onClick={() => changeTag("backend")}
       >
@@ -41,7 +41,7 @@ export default function TechFilter({ tag, setTag }) {
       <button
         className={
           "flex gap-2 items-center" +
-          (tag == "fullstack" ? " text-base-green" : "")
+          (tag == "fullstack" ? " text-base-cyan" : "")
         }
         onClick={() => changeTag("fullstack")}
       >
@@ -50,7 +50,7 @@ export default function TechFilter({ tag, setTag }) {
       <button
         className={
           "flex gap-2 items-center" +
-          (tag == "database" ? " text-base-green" : "")
+          (tag == "database" ? " text-base-cyan" : "")
         }
         onClick={() => changeTag("database")}
       >
