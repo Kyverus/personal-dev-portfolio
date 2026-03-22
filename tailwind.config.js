@@ -20,10 +20,28 @@ export default {
             opacity: "1",
           },
         },
+        glowPulse: {
+          "0%, 100%": {
+            boxShadow: "0 0 20px rgba(255,255,255,0.2)",
+          },
+          "50%": {
+            boxShadow: "0 0 20px rgba(255,255,255,0.4)",
+          },
+        },
+        shadowPulse: {
+          "0%, 100%": {
+            boxShadow: "0 0 20px rgba(0,0,0,0.2)",
+          },
+          "50%": {
+            boxShadow: "0 0 20px rgba(0,0,0,0.5)",
+          },
+        },
       },
       animation: {
         appear: "appear 0.5s ease-in-out",
         updown: "updown 5s linear infinite",
+        glowPulse: "glowPulse 2s ease-in-out infinite",
+        shadowPulse: "shadowPulse 2s ease-in-out infinite",
       },
       transitionProperty: {
         width: "width",
