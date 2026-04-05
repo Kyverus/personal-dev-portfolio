@@ -30,10 +30,10 @@ export default {
         },
         shadowPulse: {
           "0%, 100%": {
-            boxShadow: "0 0 20px rgba(0,0,0,0.2)",
+            boxShadow: "0 0 20px rgba(31, 71, 55,0.2)",
           },
           "50%": {
-            boxShadow: "0 0 20px rgba(0,0,0,0.5)",
+            boxShadow: "0 0 20px rgba(31, 71, 55,0.4)",
           },
         },
       },
@@ -46,6 +46,10 @@ export default {
       transitionProperty: {
         width: "width",
         height: "height",
+      },
+      boxShadow: {
+        'green-shade': '0 0 20px rgba(31, 71, 55, 0.4)',
+        'green-glow': '0 0 20px rgba(184, 224, 208, 0.4)',
       },
       colors: {
         base: {
@@ -62,7 +66,7 @@ export default {
           primary: "#080808",
           secondary: "#171717",
           tertiary: "#3B3B3B",
-          green: "#1f4737",
+          green: "#1f4737", //#06201C
         },
       },
     },

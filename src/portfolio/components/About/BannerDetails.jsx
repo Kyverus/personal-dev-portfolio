@@ -9,10 +9,10 @@ export function BannerDetails() {
   return (
     <>
       <div className="space-y-6">
-        <div className="text-3xl font-bold text-center xl:text-left text-dark-green dark:text-light-green">
+        <div className="text-4xl font-bold text-center xl:text-left text-dark-green dark:text-light-green">
           {banner_details.title}
         </div>
-        <div className="text-sm xs:text-base text-dark-secondary dark:text-light-secondary text-justify indent-12 tracking-wide">
+        <div className="text-base text-dark-secondary dark:text-light-secondary text-justify indent-12 tracking-wide px-4">
           {banner_details.motto}
         </div>
       </div>

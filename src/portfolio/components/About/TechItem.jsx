@@ -1,8 +1,8 @@
 export function TechItem({ techName, techSrc, labelHidden = false }) {
   return (
-    <span className="bg-light-primary dark:bg-dark-primary border-light-tertiary dark:border-dark-tertiary hover:shadow-[0_0_10px_2px_rgb(0,0,0,0.3)] hover:shadow-light-tertiary hover:dark:shadow-dark-tertiary p-3 m-2 rounded-3xl border-8 space-y-2 hover:scale-[1.1]">
+    <span className="bg-light-primary dark:bg-dark-primary border-light-green dark:border-dark-green hover:shadow-green-shade hover:dark:shadow-green-glow p-3 m-2 rounded-3xl border-4 space-y-2 hover:scale-[1.1]">
       <img
-        className="size-14 md:size-16 rounded-2xl"
+        className="size-14 rounded-2xl"
         src={techSrc}
         alt=""
         onDragStart={(e) => {
@@ -11,7 +11,7 @@ export function TechItem({ techName, techSrc, labelHidden = false }) {
       />
       <div
         className={
-          "text-sm xs:text-base text-center font-bold" +
+          "text-xs text-center font-bold" +
           (labelHidden ? " hidden" : "")
         }
       >

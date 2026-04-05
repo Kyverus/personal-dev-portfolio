@@ -65,8 +65,7 @@ export function NavBar() {
     <div
       id="navbar"
       className={
-        "fixed top-0 z-50 left-[50%] translate-x-[-50%] transition-width duration-300" +
-        (scrolled ? " w-full" : " w-full 2xl:w-[1536px] px-5")
+        "fixed top-0 z-50 left-[50%] translate-x-[-50%] transition-width duration-300 w-full"
       }
     >
       <Disclosure
@@ -76,7 +75,7 @@ export function NavBar() {
           "transition-[all,_height] duration-700 origin-center w-full" +
           (scrolled
             ? " bg-white dark:bg-dark-secondary shadow-[0_0_2px_1px_rgb(0,0,0,0.3)] md:shadow-none md:bg-white/80 md:dark:bg-dark-secondary/80 py-0 text-dark-green dark:text-light-green"
-            : " mt-5 py-2 rounded-xl bg-light-primary dark:bg-dark-primary")
+            : " mt-8 py-2 bg-white dark:bg-dark-secondary")
         }
       >
         <div className="mx-auto max-w-7xl px-2 md:px-6 lg:px-8">
@@ -101,7 +100,7 @@ export function NavBar() {
               </DisclosureButton>
             </div>
             <div className="w-40 hidden md:flex justify-center">
-              <a href="#about">
+              <a href="#about" className={"transition-opacity duration-500" + (activeSection == "about" ? " opacity-0 pointer-events-none" : " opacity-100 pointer-events-auto")}>
                 <PortfolioLogo
                   className={
                     "size-10 transition-colors duration-500" +
@@ -135,7 +134,7 @@ export function NavBar() {
                 </div>
               </div>
             </div>
-            <div className="flex w-40 mx-auto items-center justify-center">
+            <div className={"flex w-40 mx-auto items-center justify-center transition-opacity duration-500" + (activeSection == "about" ? " opacity-0 pointer-events-none" : " opacity-100 pointer-events-auto")}>
               <a
                 className="mx-2"
                 href="https://www.linkedin.com/in/kirlianpacibe12"

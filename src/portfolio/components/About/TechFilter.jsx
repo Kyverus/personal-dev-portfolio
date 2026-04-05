@@ -11,7 +11,7 @@ export default function TechFilter({ tag, setTag }) {
   }
 
   return (
-    <div className="flex flex-wrap gap-2 items-center justify-center">
+    <div className="flex flex-wrap gap-2 items-center justify-start">
       <button
         className={
           "flex gap-2 items-center" + (tag == "main" ? " text-base-cyan" : "")

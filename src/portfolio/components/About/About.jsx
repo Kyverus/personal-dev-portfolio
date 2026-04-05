@@ -3,33 +3,51 @@ import { TechList } from "./TechList";
 import { useTechnologyContext } from "../../../_contexts/TechnologyContextProvider";
 import headerImg from "../../assets/images/header-picture.jpg";
 import { DashboardStats } from "./DashboardStats";
+import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
 export function About() {
   const { technologies } = useTechnologyContext();
   return (
     <div
-      className="page-section min-h-dvh space-y-4 text-dark-primary dark:text-light-primary pt-48 bg-gradient-to-b from-base-green/60 via-light-green/60 to-light-primary/60 dark:from-base-green/60 from-[0%] dark:via-dark-green/60 via-[30%] dark:to-dark-primary/60 to-[100%]"
+      className="page-section min-h-dvh space-y-4 text-dark-primary dark:text-light-primary pt-40"
       id="about"
     >
-      <div className="xl:w-[1280px] mx-auto rounded-xl py-6 px-4 flex flex-col xl:flex-row-reverse gap-4">
-          <div className="xl:w-1/3 py-6 px-4 flex justify-center items-center bg-white/30 dark:bg-black/60 rounded-2xl animate-shadowPulse dark:animate-glowPulse relative">
+      <div className="text-center text-6xl md:text-8xl xl:text-9xl font-bold bg-gradient-to-b from-base-green to-dark-green dark:from-base-green dark:to-light-green bg-clip-text text-transparent">KIRLIAN PACIBE</div>
+      <div className="xl:w-[1280px] mx-auto px-4 flex flex-col xl:flex-row-reverse gap-3">
+          <div className="xl:w-1/3 py-6 px-4 flex flex-col justify-center items-center bg-white dark:bg-dark-secondary shadow-green-dark dark:shadow-none relative">
             <img
-              className="h-[400px] xl:h-[500px] object-scale-down rounded-full filter dark:brightness-[0.9]"
+              className="size-[350px] rounded-full object-cover filter dark:brightness-[0.9] border-4 border-light-green dark:border-dark-green"
               src={headerImg}
             />
+
+            <div className="space-y-2 py-4">
+              <div className="flex items-center gap-2">
+                <FaLinkedin className="size-7 hover:text-base-green active:text-base-cyan" />
+                <a href="https://www.linkedin.com/in/kirlianpacibe12" target="_blank" className="text-sm text-dark-green dark:text-light-green">
+                  https://www.linkedin.com/in/kirlianpacibe12
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaGithub className="size-7 hover:text-base-green active:text-base-cyan" />
+                <a href="https://github.com/kyverus" target="_blank" className="text-sm text-dark-green dark:text-light-green">
+                  https://github.com/kyverus
+                </a>
+              </div>
+            </div>
+
           </div>
-          <div className="xl:w-2/3 flex flex-col justify-center gap-4">
-            <div className={"xl:min-h-[250px] gap-4" + (technologies.length > 0 ? " flex flex-col xl:flex-row" : " flex flex-col") }>
-              <div className={"rounded-2xl p-6 space-y-8 bg-white/30 dark:bg-black/60 animate-shadowPulse dark:animate-glowPulse" + (technologies.length > 0 ? " xl:w-2/3" : "") }>
+          <div className="xl:w-2/3 flex flex-col justify-center gap-3">
+            <div className={"xl:min-h-[250px] gap-3" + (technologies.length > 0 ? " flex flex-col xl:flex-row" : " flex flex-col") }>
+              <div className={"p-6 space-y-8 bg-white dark:bg-dark-secondary shadow-green-dark dark:shadow-none" + (technologies.length > 0 ? " xl:w-2/3" : "") }>
                 <BannerDetails id="banner"/>
               </div>
-              <div className={"xl:min-h-[250px] rounded-2xl p-6 flex flex-col gap-4 bg-white/30 dark:bg-black/60 animate-shadowPulse dark:animate-glowPulse" + (technologies.length > 0 ? " xl:w-1/3" : "")}>
+              <div className={"xl:min-h-[250px] p-6 flex flex-col gap-3 bg-white dark:bg-dark-secondary shadow-green-dark dark:shadow-none" + (technologies.length > 0 ? " xl:w-1/3" : "")}>
                 <DashboardStats id="dashboard_stats" />
               </div>
             </div>
             
             {(technologies.length > 0) && (
-              <div className="rounded-2xl px-4 space-y-8 bg-white/30 dark:bg-black/60 animate-shadowPulse dark:animate-glowPulse">
+              <div className="px-4 space-y-8 bg-white dark:bg-dark-secondary shadow-green-dark dark:shadow-none">
                 <TechList technologies={technologies} />
               </div>
             )}
