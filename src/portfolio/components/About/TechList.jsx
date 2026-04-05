@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { TechItem } from "./TechItem";
 import TechFilter from "./TechFilter";
+import { BannerTitle } from "../Responsive/BannerTitle";
 
 export function TechList({ technologies, imgClass, labelHidden }) {
   const [tag, setTag] = useState("main");
@@ -16,13 +17,11 @@ export function TechList({ technologies, imgClass, labelHidden }) {
         technologies.length === 0 ? "hidden" : ""
       }`}
     >
-      <div 
-        className="text-3xl font-bold text-left text-dark-green dark:text-light-green"
-      >
+      <BannerTitle className="text-left">
         {tag == "main"
           ? "MAIN TECHNOLOGIES"
           : `TECHNOLOGIES (${tag.toUpperCase()})`}
-      </div>
+      </BannerTitle>
       <div>
         <TechFilter tag={tag} setTag={setTag} />
       </div>

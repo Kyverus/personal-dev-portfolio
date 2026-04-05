@@ -1,17 +1,19 @@
-
 import { FaFilePdf } from "react-icons/fa6";
+import { BannerView } from "./BannerView";
+import { BannerTitle } from "../../Responsive/BannerTitle";
 
-export function BannerDetails() {
+export function DetailsView({ className }) {
   const banner_details = {
     title: "WEB DEVELOPER",
-    motto: "Hello, I'm Kirlian Pacibe, A web developer with fundamental knowledge in building simple and functional websites and applications. I have developed several personal and work projects regarding web and desktop applications futher showcased below.", 
-  }
+    motto:
+      "Hello, I'm Kirlian Pacibe, A web developer with fundamental knowledge in building simple and functional websites and applications. I have developed several personal and work projects regarding web and desktop applications futher showcased below.",
+  };
   return (
-    <>
+    <BannerView
+      className={"p-6 space-y-8" + (className ? " " + className : "")}
+    >
       <div className="space-y-6">
-        <div className="text-4xl font-bold text-center xl:text-left text-dark-green dark:text-light-green">
-          {banner_details.title}
-        </div>
+        <BannerTitle className="text-left">{banner_details.title}</BannerTitle>
         <div className="text-base text-dark-secondary dark:text-light-secondary text-justify indent-12 tracking-wide px-4">
           {banner_details.motto}
         </div>
@@ -27,6 +29,6 @@ export function BannerDetails() {
           <FaFilePdf className="size-5 group-hover:text-base-cyan" />
         </a>
       </div>
-    </>
+    </BannerView>
   );
 }

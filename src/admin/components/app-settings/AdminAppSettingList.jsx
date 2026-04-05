@@ -13,7 +13,7 @@ export default function AdminAppSettingList({ onEdit, onDelete }) {
               key={setting._id}
               className="rounded-sm bg-dark-tertiary flex justify-between px-4 py-2"
             >
-              <div className="flex flex-col  p-2">
+              <div className="flex flex-col p-2">
                 <div className="flex">
                   <div className="w-14 text-light-green">Name</div>
                   <div className="flex-1">: {setting.settingName}</div>

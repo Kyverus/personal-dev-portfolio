@@ -5,22 +5,17 @@ import {
   DisclosurePanel,
   CloseButton,
 } from "@headlessui/react";
-import {
-  SunIcon,
-  MoonIcon,
-  Bars3Icon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
-import { CustomLink } from "./CustomLink";
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { CustomLink } from "./Clickables/CustomLink";
 import profilePic from "../assets/images/profile-picture.jpg";
 import { useScrollContext } from "../../_contexts/ScrollContextProvider";
 import { useDarkContext } from "../../_contexts/DarkContextProvider";
-import PortfolioLogo from "./PortfolioLogo";
+import { PortfolioLogo } from "./PortfolioLogo";
+import { LinkedinLink } from "./Clickables/LinkedinLink";
+import { GithubLink } from "./Clickables/GithubLink";
+import { DarkModeToggle } from "./Clickables/DarkModeToggle";
 
 export function NavBar() {
-  const { dark, darkModeHandler } = useDarkContext();
   const [scrolled, setScrolled] = useState(false);
   const { activeSection } = useScrollContext();
 
@@ -100,20 +95,20 @@ export function NavBar() {
               </DisclosureButton>
             </div>
             <div className="w-40 hidden md:flex justify-center">
-              <a href="#about" className={"transition-opacity duration-500" + (activeSection == "about" ? " opacity-0 pointer-events-none" : " opacity-100 pointer-events-auto")}>
-                <PortfolioLogo
-                  className={
-                    "size-10 transition-colors duration-500" +
-                    (scrolled
-                      ? dark
-                        ? " fill-light-green"
-                        : " fill-dark-green"
-                      : dark
-                        ? " fill-light-primary"
-                        : " fill-dark-primary")
-                  }
-                />
-              </a>
+              <PortfolioLogo
+                linkClass={
+                  "transition-opacity duration-500" +
+                  (activeSection == "about"
+                    ? " opacity-0 pointer-events-none"
+                    : " opacity-100 pointer-events-auto")
+                }
+                logoClass={
+                  "size-10 transition-colors duration-500" +
+                  (scrolled
+                    ? " fill-dark-green dark:fill-light-green"
+                    : " fill-dark-primary dark:fill-light-primary")
+                }
+              />
             </div>
             <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
               <div className="hidden md:mx-auto md:flex items-center">
@@ -134,28 +129,31 @@ export function NavBar() {
                 </div>
               </div>
             </div>
-            <div className={"flex w-40 mx-auto items-center justify-center transition-opacity duration-500" + (activeSection == "about" ? " opacity-0 pointer-events-none" : " opacity-100 pointer-events-auto")}>
-              <a
-                className="mx-2"
-                href="https://www.linkedin.com/in/kirlianpacibe12"
-                target="_blank"
-              >
-                <FaLinkedin className="size-8 xs:size-9 hover:text-base-green active:text-base-cyan" />
-              </a>
-              <a
-                className="mx-2"
-                href="https://github.com/kyverus"
-                target="_blank"
-              >
-                <FaGithub className="size-8 xs:size-9 hover:text-base-green active:text-base-cyan" />
-              </a>
-              <button className="mx-2" onClick={() => darkModeHandler()}>
-                {dark ? (
-                  <SunIcon className="size-8 xs:size-9 hover:text-base-green active:text-base-cyan" />
-                ) : (
-                  <MoonIcon className="size-8 xs:size-9 hover:text-base-green active:text-base-cyan" />
-                )}
-              </button>
+            <div
+              className={
+                "flex w-40 mx-2 items-center justify-center transition-opacity duration-500" +
+                (activeSection == "about"
+                  ? " opacity-100 md:opacity-0 pointer-events-none"
+                  : " opacity-100 pointer-events-auto")
+              }
+            >
+              <PortfolioLogo
+                linkClass={
+                  "transition-opacity duration-500" +
+                  (activeSection == "about"
+                    ? " opacity-0 pointer-events-none"
+                    : " opacity-100 md:opacity-0 pointer-events-auto md:pointer-events-none")
+                }
+                logoClass={
+                  "size-7 transition-colors duration-500" +
+                  (scrolled
+                    ? " fill-dark-green dark:fill-light-green"
+                    : " fill-dark-primary dark:fill-light-primary")
+                }
+              />
+              <LinkedinLink logoClass={"size-8 xs:size-9"} />
+              <GithubLink logoClass={"size-8 xs:size-9"} />
+              <DarkModeToggle logoClass={"size-8 xs:size-9"} />
             </div>
           </div>
         </div>
