@@ -4,8 +4,11 @@ import { useTechnologyContext } from "../../../_contexts/TechnologyContextProvid
 import headerImg from "../../assets/images/header-picture.jpg";
 import { DashboardStats } from "./DashboardStats";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
+import { useDarkContext } from "../../../_contexts/DarkContextProvider";
+import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
 
 export function About() {
+  const { dark, darkModeHandler } = useDarkContext();
   const { technologies } = useTechnologyContext();
   return (
     <div
@@ -15,6 +18,15 @@ export function About() {
       <div className="text-center text-6xl md:text-8xl xl:text-9xl font-bold bg-gradient-to-b from-base-green to-dark-green dark:from-base-green dark:to-light-green bg-clip-text text-transparent">KIRLIAN PACIBE</div>
       <div className="xl:w-[1280px] mx-auto px-4 flex flex-col xl:flex-row-reverse gap-3">
           <div className="xl:w-1/3 py-6 px-4 flex flex-col justify-center items-center bg-white dark:bg-dark-secondary shadow-green-dark dark:shadow-none relative">
+            <div className="w-full flex justify-end">
+                <button className="mx-2" onClick={() => darkModeHandler()}>
+                  {dark ? (
+                    <SunIcon className="size-8 xs:size-9 text-base-green hover:text-light-green active:text-base-cyan" />
+                  ) : (
+                    <MoonIcon className="size-8 xs:size-9 text-base-green hover:text-dark-green active:text-base-cyan" />
+                  )}
+                </button>
+            </div>
             <img
               className="size-[350px] rounded-full object-cover filter dark:brightness-[0.9] border-4 border-light-green dark:border-dark-green"
               src={headerImg}
