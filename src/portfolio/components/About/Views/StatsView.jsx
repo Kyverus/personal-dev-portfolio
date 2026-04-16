@@ -5,7 +5,7 @@ import { BannerTitle } from "../../Responsive/BannerTitle";
 export function StatsView({ className }) {
   return (
     <BannerView
-      className={"p-6 space-y-4" + (className ? " " + className : "")}
+      className={"p-4 space-y-4" + (className ? " " + className : "")}
     >
       <BannerTitle className="text-left">STATS</BannerTitle>
       <div className="flex flex-col flex-1">
@@ -37,7 +37,7 @@ export function StatsView({ className }) {
       <div className="flex text-md font-bold">
         <a
           href="#experience"
-          className="flex items-center gap-3 group text-base-green"
+          className="flex items-center gap-3 group text-dark-green dark:text-base-green"
         >
           <span className="group-hover:text-base-cyan">Career Timeline</span>
           <FaBriefcase className="size-5 group-hover:text-base-cyan" />

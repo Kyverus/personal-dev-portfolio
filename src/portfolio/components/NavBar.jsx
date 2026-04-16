@@ -59,17 +59,15 @@ export function NavBar() {
   return (
     <div
       id="navbar"
-      className={
-        "fixed top-0 z-50 left-[50%] translate-x-[-50%] transition-width duration-300 w-full"
-      }
+      className="fixed top-0 z-50 w-full"
     >
       <Disclosure
         id="navbar-main"
         as="nav"
         className={
-          "transition-[all,_height] duration-700 origin-center w-full" +
+          "transition-[margin,_padding] duration-500 origin-center w-full" +
           (scrolled
-            ? " bg-white dark:bg-dark-secondary shadow-[0_0_2px_1px_rgb(0,0,0,0.3)] md:shadow-none md:bg-white/80 md:dark:bg-dark-secondary/80 py-0 text-dark-green dark:text-light-green"
+            ? " mt-0 py-0 bg-white dark:bg-dark-secondary shadow-[0_0_2px_1px_rgb(0,0,0,0.3)] md:shadow-none md:bg-white/80 md:dark:bg-dark-secondary/80 text-dark-green dark:text-light-green"
             : " mt-8 py-2 bg-white dark:bg-dark-secondary")
         }
       >

@@ -19,6 +19,7 @@ export function useTechnologyContext() {
 
 export function TechnologyContextProvider({ children }) {
   const [technologies, setTechnologies] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { handleAPIRequest } = useAPIRequestHandler();
   const { handleAPIErrors } = useAPIErrorHandler();
 
@@ -27,6 +28,7 @@ export function TechnologyContextProvider({ children }) {
   }, []);
 
   async function fetchTechnologies() {
+    setLoading(true);
     const response = await handleAPIRequest(() =>
       axiosPrivate.get("/api/technologies/", {
         headers: {
@@ -38,6 +40,7 @@ export function TechnologyContextProvider({ children }) {
     const success = await handleAPIErrors(response);
 
     if (success) setTechnologies(response.data);
+    setLoading(false);
     return { success };
   }
 
@@ -108,6 +111,7 @@ export function TechnologyContextProvider({ children }) {
     <TechnologyContext.Provider
       value={{
         technologies,
+        loading,
         fetchTechnologies,
         fetchTechnology,
         createTechnology,

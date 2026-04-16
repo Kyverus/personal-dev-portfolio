@@ -10,9 +10,9 @@ export function DetailsView({ className }) {
   };
   return (
     <BannerView
-      className={"p-6 space-y-8" + (className ? " " + className : "")}
+      className={"p-6 space-y-6" + (className ? " " + className : "")}
     >
-      <div className="space-y-6">
+      <div className="space-y-4">
         <BannerTitle className="text-left">{banner_details.title}</BannerTitle>
         <div className="text-base text-dark-secondary dark:text-light-secondary text-justify indent-12 tracking-wide px-4">
           {banner_details.motto}
@@ -21,7 +21,7 @@ export function DetailsView({ className }) {
       <div className="flex text-md font-bold">
         <a
           href="#resume"
-          className="flex items-center gap-3 group text-base-green"
+          className="flex items-center gap-3 group text-dark-green dark:text-base-green"
         >
           <span className="group-hover:text-base-cyan">
             Check Out My Resume

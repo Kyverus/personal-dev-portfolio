@@ -48,24 +48,25 @@ export default {
         height: "height",
       },
       boxShadow: {
-        'green-shade': '0 0 20px rgba(31, 71, 55, 0.4)',
-        'green-glow': '0 0 20px rgba(184, 224, 208, 0.4)',
+        'black-shade': '0 2px 10px 1px rgba(0, 0, 0, 0.25)',
+        'green-shade': '0 2px 10px 2px rgba(31, 71, 55, 0.5)',
+        'green-glow': '0 2px 10px 2px rgba(63, 143, 110, 0.5)',
       },
       colors: {
-        base: {
+        base: { 
           cyan: "#06b6d4",
           green: "#3F8F6E",
         },
         light: {
-          primary: "#F5F5F5",
-          secondary: "#D4D4D4",
-          tertiary: "#B3B3B3",
+          primary: "#F4F6F4",
+          secondary: "#D4D6D4",
+          tertiary: "#B3B5B3",
           green: "#B8E0D0",
         },
         dark: {
-          primary: "#080808",
-          secondary: "#171717",
-          tertiary: "#3B3B3B",
+          primary: "#0808A08",
+          secondary: "#171917",
+          tertiary: "#3B3D3B",
           green: "#1f4737", //#06201C
         },
       },

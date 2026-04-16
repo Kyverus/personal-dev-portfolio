@@ -15,7 +15,7 @@ export function GithubLink({ logoClass, textClass, text = "" }) {
       ></FaGithub>
       <span
         className={
-          "text-sm text-dark-green dark:text-light-green" +
+          "text-sm text-base-green dark:text-light-green" +
           (textClass ? " " + textClass : "")
         }
       >
