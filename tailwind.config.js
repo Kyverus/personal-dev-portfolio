@@ -64,7 +64,7 @@ export default {
           green: "#B8E0D0",
         },
         dark: {
-          primary: "#0808A08",
+          primary: "#080A08",
           secondary: "#171917",
           tertiary: "#3B3D3B",
           green: "#1f4737", //#06201C

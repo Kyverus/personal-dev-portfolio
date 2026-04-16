@@ -26,7 +26,7 @@ function App() {
     <BrowserRouter>
       <AppProviders>
         <div
-          className="text-black dark:text-white bg-[linear-gradient(180deg,_#B8E0D0_0%,_#F4F6F4_8%)] dark:bg-[linear-gradient(180deg,_#06201C_0%,_#000000_8%)]  box-border"
+          className="text-black dark:text-white bg-[linear-gradient(180deg,_#B8E0D0_0%,_#F4F6F4_8%)] dark:bg-[linear-gradient(180deg,_#06201C_0%,_#000000_8%)] box-border"
           id="app"
         >
           <Routes>
